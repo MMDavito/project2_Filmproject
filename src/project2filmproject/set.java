@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Time;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,8 +18,8 @@ import java.util.Calendar;
  */
 public class set {
       public static void seter(String filmnamn, String regissör, String genre, 
-              Time längd, Date release, int betyg, int settGånger, Date settDatum,
-              String beskrivning){
+              /*Time längd, Date release,*/ int betyg, int settGånger, /*Date settDatum,
+              */String beskrivning){
           try {
             String userName = "root";
             String password = "";
@@ -35,15 +36,16 @@ public class set {
             preparedStatement.setString(1, filmnamn);
             preparedStatement.setString(2, regissör);
             preparedStatement.setString(3, genre);
-            preparedStatement.setTime(4, längd);
-            preparedStatement.setDate(5, release);
+           // preparedStatement.setTime(4, längd);
+           // preparedStatement.setDate(5, release);
             preparedStatement.setInt(6, betyg);
             preparedStatement.setInt(7, settGånger);
             preparedStatement.setString(8, beskrivning);
-            preparedStatement.setDate(9, settDatum);
+           // preparedStatement.setDate(9, settDatum);
             preparedStatement.setTimestamp(10, startDate);
             preparedStatement.execute();
             connection.close();
+            
         } catch (Exception e) {
             System.out.println("Error" + e);
         }
