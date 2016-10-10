@@ -275,7 +275,7 @@ public class admin extends javax.swing.JFrame {
         
         Date releasedatum, settDatum;
         int betyg, settGånger;
-        project2filmproject.set.seter(filmnamn, regissör, genre, /*0, 0,*/ 0, 0, /*null,*/ beskrivning);
+        project2filmproject.set.seter(filmnamn, regissör, genre, null, null, 0, 0, null, beskrivning);
         
     }//GEN-LAST:event_addActionPerformed
 

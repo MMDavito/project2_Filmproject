@@ -17,10 +17,11 @@ import javax.swing.JOptionPane;
  * @author daca97002
  */
 public class set {
-      public static void seter(String filmnamn, String regissör, String genre, 
-              /*Time längd, Date release,*/ int betyg, int settGånger, /*Date settDatum,
-              */String beskrivning){
-          try {
+
+    public static void seter(String filmnamn, String regissör, String genre,
+            Time längd, Date release, int betyg, int settGånger, Date settDatum,
+            String beskrivning) {
+        try {
             String userName = "root";
             String password = "";
             Connection connection = ConnectionFactory.getConnection(userName, password);
@@ -30,25 +31,25 @@ public class set {
 
             String query = " insert into filmregister (filmnamn, regissör, "
                     + "genre, längd, releasedatum, betyg, sett_gånger, "
-                    + "beskrivning, sett_datum redigerad_datum)" 
+                    + "beskrivning, sett_datum, redigerad_datum)"
                     + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, filmnamn);
             preparedStatement.setString(2, regissör);
             preparedStatement.setString(3, genre);
-           // preparedStatement.setTime(4, längd);
-           // preparedStatement.setDate(5, release);
+            preparedStatement.setTime(4, längd);
+            preparedStatement.setDate(5, release);
             preparedStatement.setInt(6, betyg);
             preparedStatement.setInt(7, settGånger);
             preparedStatement.setString(8, beskrivning);
-           // preparedStatement.setDate(9, settDatum);
+            preparedStatement.setDate(9, settDatum);
             preparedStatement.setTimestamp(10, startDate);
             preparedStatement.execute();
             connection.close();
-            
+
         } catch (Exception e) {
             System.out.println("Error" + e);
         }
     }
-    
+
 }
