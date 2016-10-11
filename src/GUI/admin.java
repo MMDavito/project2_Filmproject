@@ -70,6 +70,12 @@ public class admin extends javax.swing.JFrame {
 
         jLabel2.setText("Regissör");
 
+        regissör.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regissörActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Genre");
 
         jLabel4.setText("Längd");
@@ -305,6 +311,10 @@ public class admin extends javax.swing.JFrame {
     private void betygActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_betygActionPerformed
+
+    private void regissörActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regissörActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regissörActionPerformed
 
     /**
      * @param args the command line arguments
