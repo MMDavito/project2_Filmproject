@@ -248,6 +248,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="betyg">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="betygActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>

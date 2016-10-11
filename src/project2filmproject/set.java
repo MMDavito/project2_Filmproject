@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class set {
 
-    public static void seter(String filmnamn, String regissör, String genre,
+    public static void seter(String filmnamn, String regissör, int genre,
             Time längd, Date release, int betyg, int settGånger, Date settDatum,
             String beskrivning) {
         try {
@@ -36,7 +36,7 @@ public class set {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, filmnamn);
             preparedStatement.setString(2, regissör);
-            preparedStatement.setString(3, genre);
+            preparedStatement.setInt(3, genre);
             preparedStatement.setTime(4, längd);
             preparedStatement.setDate(5, release);
             preparedStatement.setInt(6, betyg);

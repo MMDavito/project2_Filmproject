@@ -85,6 +85,12 @@ public class admin extends javax.swing.JFrame {
 
         jLabel6.setText("Betyg");
 
+        betyg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                betygActionPerformed(evt);
+            }
+        });
+
         jLabel7.setText("Sett gånger");
 
         jLabel8.setText("Sett datum");
@@ -250,7 +256,7 @@ public class admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void filmnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmnamnActionPerformed
-        
+
     }//GEN-LAST:event_filmnamnActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
@@ -266,17 +272,17 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_clearActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        String  filmnamn = this.filmnamn.getText(), 
+        String filmnamn = this.filmnamn.getText(),
                 regissör = this.regissör.getText(),
-                genre = this.genre.getText(), 
                 beskrivning = this.beskrivning.getText();
-        
+                
+        int genre = Integer.parseInt(this.genre.getText());
         
         
         Date releasedatum, settDatum;
         int betyg, settGånger;
         project2filmproject.set.seter(filmnamn, regissör, genre, null, null, 0, 0, null, beskrivning);
-        
+
     }//GEN-LAST:event_addActionPerformed
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
@@ -289,12 +295,16 @@ public class admin extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Felmedelande: "+e);
         }*/
-        
+
     }//GEN-LAST:event_timmarActionPerformed
 
     private void minuterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minuterActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_minuterActionPerformed
+
+    private void betygActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_betygActionPerformed
 
     /**
      * @param args the command line arguments
