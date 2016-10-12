@@ -367,8 +367,8 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_comboGenreListActionPerformed
 
     private void addListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addListActionPerformed
+       //SKICKA INMATAT VÄRDE TILL jComboBox        
         int genreNummer = 0;
-
         String kategorgi = tFGenre.getText().toString().toLowerCase();
 
         switch ((kategorgi)) {
@@ -392,7 +392,9 @@ public class admin extends javax.swing.JFrame {
         }
         if (kategorgi.isEmpty() == true) {
             listMessage.setText("Fält är tomt");
-        }if(genreNummer >0){listMessage.setText("");}
+        }
+        //TÖMM MEDELANDE OM ANVÄNDARE GER KORREKT VÄRDE
+        if(genreNummer >0){listMessage.setText("");}
         
         String stBokstav = kategorgi.substring(0, 1).toUpperCase();
         String stKategori = stBokstav + kategorgi.substring(1);
