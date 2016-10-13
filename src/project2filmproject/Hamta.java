@@ -9,6 +9,8 @@ package project2filmproject;
  *
  * @author daca97002
  */
-public class get {
+public class Hamta {
+    public static void hamta(){
     
+    }
 }
