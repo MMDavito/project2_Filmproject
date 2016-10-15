@@ -23,7 +23,7 @@ public class Project2Filmproject {
         try {
             String userName = "root";
             String password = "";
-            Connection connection = ConnectionFactory.getConnection(userName, password);
+            Connection connection = ConnectionFactory.getConnection();
             //lägg till Hunt for the Wilderpeople till databasen, testa sen skriv ut (lägg bara till med ren kod)
             Calendar calandar = Calendar.getInstance();
             java.sql.Date startDate = new java.sql.Date(calandar.getTime().getTime());

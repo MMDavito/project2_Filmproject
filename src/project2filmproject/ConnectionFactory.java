@@ -14,13 +14,17 @@ import java.sql.DriverManager;
  */
 public class ConnectionFactory{
     public static Connection getConnection(/*ändra till hash?*/
-            String userName, String password) throws Exception{
+       /* String userName, String */) throws Exception{ 
         String url = "jdbc:mysql://localhost/filmregister";
         String namn = "root";
         String löss = "";
         Connection connection = (com.mysql.jdbc.Connection)DriverManager.getConnection(url, namn, löss);
         System.out.println(connection);
         return connection;
+    }
+    public static Boolean autentisering(String username, String password){
+    //kolla autentisering, och skicka om true till getConnection
+    return true;
     }
     
 }

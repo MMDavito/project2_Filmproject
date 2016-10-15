@@ -23,37 +23,75 @@ public class set {
             int längd, Date release, int betyg, int settGånger, Date settDatum,
             String beskrivning) {
         try {
-            String userName = "root";
-            String password = "";
-            Connection connection = ConnectionFactory.getConnection(userName, password);
-            //lägg till Hunt for the Wilderpeople till databasen, testa sen skriv ut (lägg bara till med ren kod)
-            Calendar calandar = Calendar.getInstance();
-            java.sql.Timestamp startDate = new java.sql.Timestamp(calandar.getTime().getTime());
+            Connection connection = ConnectionFactory.getConnection();
 
             try {
-                 String query = " insert into filmregister (filmnamn, regissör, "
-                    + "genre, längd, releasedatum, betyg, sett_gånger, "
-                    + "beskrivning, sett_datum, redigerad_datum)"
-                    + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, filmnamn);
-            preparedStatement.setString(2, regissör);
-            preparedStatement.setInt(3, genre);
-            preparedStatement.setInt(4, längd);
-            preparedStatement.setDate(5, release);
-            preparedStatement.setInt(6, betyg);
-            preparedStatement.setInt(7, settGånger);
-            preparedStatement.setString(8, beskrivning);
-            preparedStatement.setDate(9, settDatum);
-            preparedStatement.setTimestamp(10, startDate);
-            preparedStatement.execute();
-            connection.close();
+                String query = "insert into filmregister (filmnamn, regissör, "
+                        + "genre, längd, releasedatum, betyg, sett_gånger, "
+                        + "beskrivning, sett_datum, redigerad_datum)"
+                        + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+                Calendar calandar = Calendar.getInstance();
+                java.sql.Timestamp startDate = new java.sql.Timestamp(calandar.getTime().getTime());
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, filmnamn);
+                preparedStatement.setString(2, regissör);
+                preparedStatement.setInt(3, genre);
+                preparedStatement.setInt(4, längd);
+                preparedStatement.setDate(5, release);
+                preparedStatement.setInt(6, betyg);
+                preparedStatement.setInt(7, settGånger);
+                preparedStatement.setString(8, beskrivning);
+                preparedStatement.setDate(9, settDatum);
+                preparedStatement.setTimestamp(10, startDate);
+                preparedStatement.execute();
+                connection.close();
             } catch (MySQLIntegrityConstraintViolationException e) {
-                GUI.sökRedigera(filmnamn);
+                OpenRedigera(filmnamn);
+                System.out.println("Öppnade ny jFrame då felet: " + e + " <-- upstod");
             }
         } catch (Exception e) {
-            System.out.println("Error" + e);
+            System.out.println("Connectionfel " + e);
+        }
+    }
+
+    public static void OpenRedigera(String filmnamn) {
+        GUI.adminRedigera.film(filmnamn);
+        GUI.adminRedigera redigera = new GUI.adminRedigera();
+
+        redigera.setVisible(true);
+    }
+
+    public static void Change(String filmnamn, String regissör, int genre,
+            int längd, Date release, int betyg, int settGånger, Date settDatum,
+            String beskrivning) {
+        try {
+            Connection connection = ConnectionFactory.getConnection();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Starta databasen ");
+            System.out.println("Connectionfel " + e);
+        }
+    }
+
+    public static void Delete(String filmnamn) {
+        try {
+            Connection connection = ConnectionFactory.getConnection();
+            String query = "DELETE FROM filmregister WHERE filmnamn = ?";
+            
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, filmnamn);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Starta databasen ");
+            System.out.println("Connectionfel " + e);
         }
     }
 
 }
+
+/*public static void Redigera(String filmnamn){
+Redigera redigera = new Redigera();
+redigera.setVisible(true);
+
+}*/
