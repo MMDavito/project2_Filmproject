@@ -28,6 +28,13 @@ public class FilmInfo {
     Filnamn = filmnamn;
     Regissör=regissör;
     Genre = genre;
+    Längd = längd;
+    Release = release;
+    Betyg = betyg;
+    SettGånger = settGånger;
+    SettDatum = settDatum;
+    Beskrivning = beskrivning;
+    
     }
     }
 //construktor
