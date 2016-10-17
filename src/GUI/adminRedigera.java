@@ -27,7 +27,8 @@ public class adminRedigera extends javax.swing.JFrame {
 
     public static void film(String filmNamn) {
         filmensNamn = filmNamn;
-
+        mellanregister /*insert information ifrån "mellanregister", 
+                gör sedan om det och skriv ut det i alla rutorna.*/
     }
 
     public adminRedigera() {
@@ -143,7 +144,7 @@ public class adminRedigera extends javax.swing.JFrame {
             }
         });
 
-        add.setText("Lägg till");
+        add.setText("Ändra");
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
@@ -279,9 +280,9 @@ public class adminRedigera extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addList)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(oldFilmnamn, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(oldFilmnamn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
@@ -379,13 +380,10 @@ public class adminRedigera extends javax.swing.JFrame {
     }//GEN-LAST:event_clearActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        try {
-
-        } catch (Exception e) {
-        }
-
-        try {
-            String filmnamn = this.newFilmnamn.getText(),
+   
+        try {           
+            String  nyttFilmnamn = this.newFilmnamn.getText(),
+                    orgNamn = this.oldFilmnamn.getText(),
                     regissör = this.regissör.getText(),
                     beskrivning = this.beskrivning.getText();
 
@@ -403,7 +401,7 @@ public class adminRedigera extends javax.swing.JFrame {
 
             Date releasedatum, settDatum;
             int betyg, settGånger;
-            project2filmproject.set.seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);
+            project2filmproject.set.Change(orgNamn, nyttFilmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);
             listMessage.setText("Inlägg lyckades");
         } catch (Exception e) {
             listMessage.setText("Fyll i fält");

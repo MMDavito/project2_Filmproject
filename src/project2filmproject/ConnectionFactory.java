@@ -7,6 +7,9 @@ package project2filmproject;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +25,11 @@ public class ConnectionFactory{
         System.out.println(connection);
         return connection;
     }
-    public static Boolean autentisering(String username, String password){
+    
+
+    
+    
+    public static Boolean Autentisering(String username, String password){
     //kolla autentisering, och skicka om true till getConnection
     return true;
     }

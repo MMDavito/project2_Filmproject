@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class set {
 
-    public static void seter(String filmnamn, String regissör, int genre,
+    public static void Seter(String filmnamn, String regissör, int genre,
             int längd, Date release, int betyg, int settGånger, Date settDatum,
             String beskrivning) {
         try {
@@ -45,13 +45,20 @@ public class set {
                 preparedStatement.setDate(9, settDatum);
                 preparedStatement.setTimestamp(10, startDate);
                 preparedStatement.execute();
-                connection.close();
+                try {
+                    connection.close();
+                    preparedStatement.close();
+                } catch (Exception e) {
+                    System.out.println("Misslyckades avsluta " + e);
+                }
+
             } catch (MySQLIntegrityConstraintViolationException e) {
                 OpenRedigera(filmnamn);
                 System.out.println("Öppnade ny jFrame då felet: " + e + " <-- upstod");
             }
         } catch (Exception e) {
             System.out.println("Connectionfel " + e);
+
         }
     }
 
@@ -62,11 +69,14 @@ public class set {
         redigera.setVisible(true);
     }
 
-    public static void Change(String filmnamn, String regissör, int genre,
+    public static void Change(String oldFilmnamn, String newFilmnamn, String regissör, int genre,
             int längd, Date release, int betyg, int settGånger, Date settDatum,
             String beskrivning) {
         try {
             Connection connection = ConnectionFactory.getConnection();
+
+            Delete(oldFilmnamn);
+            Seter(newFilmnamn, regissör, genre, längd, release, betyg, settGånger, settDatum, beskrivning);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Starta databasen ");
@@ -78,10 +88,10 @@ public class set {
         try {
             Connection connection = ConnectionFactory.getConnection();
             String query = "DELETE FROM filmregister WHERE filmnamn = ?";
-            
+
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, filmnamn);
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Starta databasen ");
             System.out.println("Connectionfel " + e);

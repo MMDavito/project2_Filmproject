@@ -344,7 +344,7 @@ public class admin extends javax.swing.JFrame {
 
             Date releasedatum, settDatum;
             int betyg, settGånger;
-            project2filmproject.set.seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);
+            project2filmproject.set.Seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);
             listMessage.setText("Inlägg lyckades");
         } catch (Exception e) {
             listMessage.setText("Fyll i fält");
