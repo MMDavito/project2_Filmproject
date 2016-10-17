@@ -23,7 +23,7 @@ public class get {
         return ""; }
     
     
-        public static ArrayList<FilmInfo> getInfo(String sökt, String källa, String id){
+        public static ArrayList<FilmObjekt> getInfo(String sökt, String källa, String id){
             
         ResultSet rs = null;
                     try {
@@ -37,9 +37,9 @@ public class get {
             preparedStatement.setString(2, id);
            rs = preparedStatement.executeQuery();
            
-           ArrayList<FilmInfo> film = new ArrayList<>();
+           ArrayList<FilmObjekt> film = new ArrayList<>();
                         while (rs.next()){
-                        film.add(0, element);
+                        film.add(rs.get);
                             
                         }
             

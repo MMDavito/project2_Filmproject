@@ -11,18 +11,18 @@ import java.sql.Date;
  *
  * @author daca97002
  */
-public class FilmInfo {
+public class FilmObjekt {
     public String Filnamn; 
     public String Regissör;
     public int Genre;
     public int Längd; 
     public Date Release; 
     public int Betyg; 
-    public int SettGånger; 
-    public Date SettDatum;
+    public int SettGånger;     
     public String Beskrivning;
+    public Date SettDatum;
     //construktor
-    public FilmInfo(String filmnamn, String regissör, int genre,
+    public FilmObjekt(String filmnamn, String regissör, int genre,
             int längd, Date release, int betyg, int settGånger, Date settDatum,
             String beskrivning){
     Filnamn = filmnamn;

@@ -19,9 +19,9 @@ import javax.swing.JOptionPane;
  */
 public class set {
 
-    public static void Seter(String filmnamn, String regissör, int genre,
+    public static FilmObjekt Seter arg()/*(String filmnamn, String regissör, int genre,
             int längd, Date release, int betyg, int settGånger, Date settDatum,
-            String beskrivning) {
+            String beskrivning)*/ {
         try {
             Connection connection = ConnectionFactory.getConnection();
 

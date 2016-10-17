@@ -325,8 +325,29 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_clearActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        int tim = Integer.parseInt(this.timmar.getText());
+        int min = Integer.parseInt(this.minuter.getText());
+        int sekunder = 0;
         try {
-            String filmnamn = this.filmnamn.getText(),
+            sekunder = omvandla.time.timeToSec(tim, min);
+
+        } catch (Exception e) {
+            listMessage.setText("Fyll i korrekt tid");
+            System.out.println("Error: " + e);
+        }
+        try {
+            project2filmproject.FilmObjekt[] film = new project2filmproject.FilmObjekt[1];
+            film[0].Filnamn = this.filmnamn.getText();
+            film[0].Regissör = this.regissör.getText();
+            film[0].Beskrivning = this.beskrivning.getText();
+            film[0].Genre = this.comboGenreList.getSelectedIndex() + 1;
+            film[0].Längd = sekunder;
+            film[0].Release = null;
+            film[0].SettDatum = null;
+            film[0].SettGånger = 0;
+            film[0].Betyg = 0;
+            project2filmproject.set.Seter(film[0]);
+            /*String filmnamn = this.filmnamn.getText(),
                    regissör = this.regissör.getText(),
                    beskrivning = this.beskrivning.getText();
 
@@ -343,8 +364,10 @@ public class admin extends javax.swing.JFrame {
             }
 
             Date releasedatum, settDatum;
-            int betyg, settGånger;
-            project2filmproject.set.Seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);
+            int betyg, settGånger;*/
+            
+            /*project2filmproject.set.Seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);*/
+            
             listMessage.setText("Inlägg lyckades");
         } catch (Exception e) {
             listMessage.setText("Fyll i fält");
