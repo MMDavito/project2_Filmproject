@@ -12,7 +12,7 @@ import java.sql.Date;
  * @author daca97002
  */
 public class FilmObjekt {
-    public String Filnamn; 
+    public String Filmnamn; 
     public String Regissör;
     public int Genre;
     public int Längd; 
@@ -21,11 +21,12 @@ public class FilmObjekt {
     public int SettGånger;     
     public String Beskrivning;
     public Date SettDatum;
+}
     //construktor
-    public FilmObjekt(String filmnamn, String regissör, int genre,
+    /*public FilmObjekt(String filmnamn, String regissör, int genre,
             int längd, Date release, int betyg, int settGånger, Date settDatum,
             String beskrivning){
-    Filnamn = filmnamn;
+    Filmnamn = filmnamn;
     Regissör=regissör;
     Genre = genre;
     Längd = längd;
@@ -36,6 +37,6 @@ public class FilmObjekt {
     Beskrivning = beskrivning;
     
     }
-    }
+*/
 //construktor
  

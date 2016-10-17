@@ -373,7 +373,7 @@ public class Redigera extends javax.swing.JPanel {
 
             Date releasedatum, settDatum;
             int betyg, settGånger;
-            project2filmproject.set.seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);
+            project2filmproject.Set.seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);
             listMessage.setText("Inlägg lyckades");
         } catch (Exception e) {
             listMessage.setText("Fyll i fält");

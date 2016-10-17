@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.sql.Time;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import project2filmproject.FilmObjekt;
 
 /**
  *
@@ -336,17 +337,25 @@ public class admin extends javax.swing.JFrame {
             System.out.println("Error: " + e);
         }
         try {
-            project2filmproject.FilmObjekt[] film = new project2filmproject.FilmObjekt[1];
-            film[0].Filnamn = this.filmnamn.getText();
-            film[0].Regissör = this.regissör.getText();
-            film[0].Beskrivning = this.beskrivning.getText();
-            film[0].Genre = this.comboGenreList.getSelectedIndex() + 1;
-            film[0].Längd = sekunder;
-            film[0].Release = null;
-            film[0].SettDatum = null;
-            film[0].SettGånger = 0;
-            film[0].Betyg = 0;
-            project2filmproject.set.Seter(film[0]);
+            FilmObjekt film = new FilmObjekt();
+            
+            
+            
+            /*project2filmproject.FilmObjekt[] film = new project2filmproject.FilmObjekt[1];*/
+            film.Filmnamn = this.filmnamn.getText();
+            film.Regissör = this.regissör.getText();
+            film.Beskrivning = this.beskrivning.getText();
+            film.Genre = this.comboGenreList.getSelectedIndex() + 1;
+            film.Längd = sekunder;
+            film.Release = null;
+            film.SettDatum = null;
+            film.SettGånger = 0;
+            film.Betyg = 0;
+            project2filmproject.Set.Seter(film);
+                    listMessage.setText("Inlägg lyckades");
+    }catch (Exception e) {
+            listMessage.setText("Fyll i fält");
+            System.out.println("Error " + e);
             /*String filmnamn = this.filmnamn.getText(),
                    regissör = this.regissör.getText(),
                    beskrivning = this.beskrivning.getText();
@@ -366,12 +375,9 @@ public class admin extends javax.swing.JFrame {
             Date releasedatum, settDatum;
             int betyg, settGånger;*/
             
-            /*project2filmproject.set.Seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);*/
+            /*project2filmproject.Set.Seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);*/
             
-            listMessage.setText("Inlägg lyckades");
-        } catch (Exception e) {
-            listMessage.setText("Fyll i fält");
-            System.out.println("Error " + e);
+
         }
 
 

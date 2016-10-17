@@ -401,7 +401,7 @@ public class adminRedigera extends javax.swing.JFrame {
 
             Date releasedatum, settDatum;
             int betyg, settGånger;
-            project2filmproject.set.Change(orgNamn, nyttFilmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);
+            project2filmproject.Set.Change(orgNamn, nyttFilmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);
             listMessage.setText("Inlägg lyckades");
         } catch (Exception e) {
             listMessage.setText("Fyll i fält");
@@ -459,7 +459,7 @@ public class adminRedigera extends javax.swing.JFrame {
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         String taBort = this.oldFilmnamn.getText();
         try {
-            project2filmproject.set.Delete(taBort);
+            project2filmproject.Set.Delete(taBort);
             JOptionPane.showMessageDialog(null, "Tog bort " + taBort);
             this.setVisible(false);
         } catch (Exception e) {
