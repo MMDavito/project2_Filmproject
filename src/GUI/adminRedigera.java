@@ -7,6 +7,7 @@ package GUI;
 
 import java.sql.Date;
 import javax.swing.JOptionPane;
+import project2filmproject.FilmObjekt;
 
 /**
  * Tar emot info ifrån redan existerande film, skickar redigeringsinformation.
@@ -27,7 +28,7 @@ public class adminRedigera extends javax.swing.JFrame {
 
     public static void film(String filmNamn) {
         filmensNamn = filmNamn;
-        mellanregister /*insert information ifrån "mellanregister", 
+        /*mellanregister insert information ifrån "mellanregister", 
                 gör sedan om det och skriv ut det i alla rutorna.*/
     }
 
@@ -380,33 +381,35 @@ public class adminRedigera extends javax.swing.JFrame {
     }//GEN-LAST:event_clearActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+   FilmObjekt film = new FilmObjekt();
+   String gammalFilm = this.oldFilmnamn.getText();
    
-        try {           
-            String  nyttFilmnamn = this.newFilmnamn.getText(),
-                    orgNamn = this.oldFilmnamn.getText(),
-                    regissör = this.regissör.getText(),
-                    beskrivning = this.beskrivning.getText();
+        int tim = Integer.parseInt(this.timmar.getText());
+        int min = Integer.parseInt(this.minuter.getText());
+        int sekunder = 0;
+        try {
+            sekunder = omvandla.time.timeToSec(tim, min);
 
-            int genre = this.comboGenreList.getSelectedIndex() + 1;
-            int tim = Integer.parseInt(this.timmar.getText());
-            int min = Integer.parseInt(this.minuter.getText());
-            int sekunder = 0;
-            try {
-                sekunder = omvandla.time.timeToSec(tim, min);
-
-            } catch (Exception e) {
-                listMessage.setText("Fyll i korrekt tid");
-                System.out.println("Error: " + e);
-            }
-
-            Date releasedatum, settDatum;
-            int betyg, settGånger;
-            project2filmproject.Set.Change(orgNamn, nyttFilmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);
-            listMessage.setText("Inlägg lyckades");
         } catch (Exception e) {
+            listMessage.setText("Fyll i korrekt tid");
+            System.out.println("Error: " + e);
+        } try{
+            /*project2filmproject.FilmObjekt[] film = new project2filmproject.FilmObjekt[1];*/
+            film.Filmnamn = this.newFilmnamn.getText();
+            film.Regissör = this.regissör.getText();
+            film.Beskrivning = this.beskrivning.getText();
+            film.Genre = this.comboGenreList.getSelectedIndex() + 1;
+            film.Längd = sekunder;
+            film.Release = null;
+            film.SettDatum = null;
+            film.SettGånger = 0;
+            film.Betyg = 0;
+            project2filmproject.Set.Change(gammalFilm, film);
+                    listMessage.setText("Inlägg lyckades");
+    }catch (Exception e) {
             listMessage.setText("Fyll i fält");
             System.out.println("Error " + e);
-        }
+    }
     }//GEN-LAST:event_addActionPerformed
 
     private void minuterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minuterActionPerformed

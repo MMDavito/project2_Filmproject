@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//vackert underbart
 package project2filmproject;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
@@ -10,6 +11,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 
@@ -17,11 +19,17 @@ import javax.swing.JOptionPane;
  *
  * @author daca97002
  */
-public class set {
+public class Set {
 
-    public static FilmObjekt Seter arg()/*(String filmnamn, String regissör, int genre,
+    /**
+     *
+     * @param film Vill få en arraylist
+     * @return
+     */
+    public static void Seter(FilmObjekt film)/*(String filmnamn, String regissör, int genre,
             int längd, Date release, int betyg, int settGånger, Date settDatum,
             String beskrivning)*/ {
+         
         try {
             Connection connection = ConnectionFactory.getConnection();
 
@@ -34,15 +42,15 @@ public class set {
                 Calendar calandar = Calendar.getInstance();
                 java.sql.Timestamp startDate = new java.sql.Timestamp(calandar.getTime().getTime());
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, filmnamn);
-                preparedStatement.setString(2, regissör);
-                preparedStatement.setInt(3, genre);
-                preparedStatement.setInt(4, längd);
-                preparedStatement.setDate(5, release);
-                preparedStatement.setInt(6, betyg);
-                preparedStatement.setInt(7, settGånger);
-                preparedStatement.setString(8, beskrivning);
-                preparedStatement.setDate(9, settDatum);
+                preparedStatement.setString(1, film.Filmnamn);
+                preparedStatement.setString(2, film.Regissör);
+                preparedStatement.setInt(3, film.Genre);
+                preparedStatement.setInt(4, film.Längd);
+                preparedStatement.setDate(5, film.Release);
+                preparedStatement.setInt(6, film.Betyg);
+                preparedStatement.setInt(7, film.SettGånger);
+                preparedStatement.setString(8, film.Beskrivning);
+                preparedStatement.setDate(9, film.SettDatum);
                 preparedStatement.setTimestamp(10, startDate);
                 preparedStatement.execute();
                 try {
@@ -53,7 +61,7 @@ public class set {
                 }
 
             } catch (MySQLIntegrityConstraintViolationException e) {
-                OpenRedigera(filmnamn);
+                OpenRedigera(film.Filmnamn);
                 System.out.println("Öppnade ny jFrame då felet: " + e + " <-- upstod");
             }
         } catch (Exception e) {
@@ -69,14 +77,12 @@ public class set {
         redigera.setVisible(true);
     }
 
-    public static void Change(String oldFilmnamn, String newFilmnamn, String regissör, int genre,
-            int längd, Date release, int betyg, int settGånger, Date settDatum,
-            String beskrivning) {
+    public static void Change(String oldFilmnamn, FilmObjekt film) {
         try {
             Connection connection = ConnectionFactory.getConnection();
 
             Delete(oldFilmnamn);
-            Seter(newFilmnamn, regissör, genre, längd, release, betyg, settGånger, settDatum, beskrivning);
+            Seter(film);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Starta databasen ");

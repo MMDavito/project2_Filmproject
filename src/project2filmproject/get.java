@@ -16,11 +16,14 @@ import javax.swing.JOptionPane;
  * @author daca97002
  */
 public class get {
+    
+    
 
-    public static String GeterFilmnamn(String filmnamn) {
-        getInfo("*", "filmnamn", filmnamn);
+    public static FilmObjekt GeterFilmnamn(String filmnamn) {
+        List<FilmObjekt> film = new ArrayList<FilmObjekt>();
+        film = getInfo("*", "filmnamn", filmnamn);
         
-        return ""; }
+        return film; }
     
     
         public static ArrayList<FilmObjekt> getInfo(String sökt, String källa, String id){
@@ -57,7 +60,7 @@ public class get {
                                 JOptionPane.showMessageDialog(null, "misslycakdes stänga prepared statement " + e);
                             }
                             try {
-                                if(rs != null){rs.close();}
+                                rs.close();
                             } catch (Exception e) {JOptionPane.showMessageDialog(null, "misslycakdes stänga resultSet " + e);
                             }
                         } catch (Exception e) {
