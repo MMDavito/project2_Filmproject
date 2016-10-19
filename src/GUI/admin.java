@@ -351,7 +351,8 @@ public class admin extends javax.swing.JFrame {
             film.SettDatum = null;
             film.SettGånger = 0;
             film.Betyg = 0;
-            project2filmproject.Set.Seter(film);
+            
+            project2filmproject.FilmFörstörd.Seter(film);
                     listMessage.setText("Inlägg lyckades");
     }catch (Exception e) {
             listMessage.setText("Fyll i fält");
@@ -415,7 +416,7 @@ public class admin extends javax.swing.JFrame {
     private void addListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addListActionPerformed
         //SKICKA INMATAT VÄRDE TILL jComboBox        
         int genreNummer = 0;
-        String kategorgi = tFGenre.getText().toString().toLowerCase();
+        String kategorgi = tFGenre.getText().toLowerCase();
 
         switch ((kategorgi)) {
             case "action":

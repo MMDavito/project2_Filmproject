@@ -21,7 +21,8 @@ public class Project2Filmproject {
      */
     public static void main(String[] args) {
     
-        System.out.println(get.GeterFilmnamn("Raflel"));
+        String regissör = FilmFörstörd.genreGet("Raflel");
+        System.out.println("Reissörs id= "+regissör);
     }
 }
 

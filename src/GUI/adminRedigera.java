@@ -404,7 +404,7 @@ public class adminRedigera extends javax.swing.JFrame {
             film.SettDatum = null;
             film.SettGånger = 0;
             film.Betyg = 0;
-            project2filmproject.Set.Change(gammalFilm, film);
+            project2filmproject.FilmFörstörd.Change(gammalFilm, film);
                     listMessage.setText("Inlägg lyckades");
     }catch (Exception e) {
             listMessage.setText("Fyll i fält");
@@ -423,7 +423,7 @@ public class adminRedigera extends javax.swing.JFrame {
     private void addListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addListActionPerformed
         //SKICKA INMATAT VÄRDE TILL jComboBox
         int genreNummer = 0;
-        String kategorgi = tFGenre.getText().toString().toLowerCase();
+        String kategorgi = tFGenre.getText().toLowerCase();
 
         switch ((kategorgi)) {
             case "action":
@@ -462,7 +462,7 @@ public class adminRedigera extends javax.swing.JFrame {
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         String taBort = this.oldFilmnamn.getText();
         try {
-            project2filmproject.Set.Delete(taBort);
+            project2filmproject.FilmFörstörd.Delete(taBort);
             JOptionPane.showMessageDialog(null, "Tog bort " + taBort);
             this.setVisible(false);
         } catch (Exception e) {

@@ -16,5 +16,26 @@ public class Strang {
         String stOrd = stBokstav + ord.substring(1);
         return stOrd;
     }
+    public static String genreIntToString(int genre){
+        String genreNummer = "";
+    }
+          switch ((genre)) {
+              case: 1
+                      genreNummer = Action;
+                break;
+            case "comedy":
+                genreNummer = 2;
+                break;
+            case "romance":
+                genreNummer = 3;
+                break;
+            case "war":
+                genreNummer = 4;
+                break;
+            case "documentery":
+                genreNummer = 5;
+                break;
+            default:
+    }
     
 }
