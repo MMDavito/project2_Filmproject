@@ -25,6 +25,7 @@ public class FilmFörstörd {
             int längd, Date release, int betyg, int settGånger, Date settDatum,
             String beskrivning)*/ {
         int regissör = 0;
+        int kategori =omvandla.Strang.genreToId(film.Genre);
         try {
             Connection connection = ConnectionFactory.getConnection();
             try {
@@ -43,7 +44,7 @@ public class FilmFörstörd {
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, film.Filmnamn.toLowerCase());
                 preparedStatement.setString(2, film.Regissör);
-                preparedStatement.setInt(3, film.Genre);
+                preparedStatement.setInt(3, kategori);
                 preparedStatement.setInt(4, film.Längd);
                 preparedStatement.setDate(5, film.Release);
                 preparedStatement.setInt(6, film.Betyg);
@@ -168,7 +169,7 @@ public class FilmFörstörd {
             String query = "SELECT * FROM filmregister WHERE ? = ? ";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            /*preparedStatement.setString(1, sökt);*/
+            /*preparedStatement.setString(1, sökt = *);*/
             preparedStatement.setString(1, SöktI);
             preparedStatement.setString(2, söktNamn);
             rs = preparedStatement.executeQuery();
@@ -179,14 +180,13 @@ public class FilmFörstörd {
                 film.Regissör = regissörGet(film.Filmnamn);
                 film.Beskrivning = rs.getString(söktNamn);
                 film.Genre = genreGet(film.Filmnamn);
-                film.Längd = sekunder;
+                film.Längd = rs.getInt("längd");
                 film.Release = null;
                 film.SettDatum = null;
                 film.SettGånger = 0;
                 film.Betyg = 0;
 
-                film.set(i, filmObjekt.Filmnamn) = rs;
-
+        return filmer;
             }
 
             try {
@@ -215,7 +215,7 @@ public class FilmFörstörd {
             JOptionPane.showMessageDialog(null, "Starta databasen ");
             System.out.println("Connectionfel " + e);
         }
-        return film;
+    return null;
     }
     public static String genreGet(String filmnamn){
            String gen = "null";

@@ -8,6 +8,7 @@ package project2filmproject;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -20,9 +21,14 @@ public class Project2Filmproject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    
-        String regissör = FilmFörstörd.genreGet("Raflel");
-        System.out.println("Reissörs id= "+regissör);
+    ArrayList<FilmObjekt> filmer = new ArrayList<>();
+        filmer = FilmFörstörd.getInfo("filmnamn", "fsdfsd");
+        /*while (filmer.next()) {
+            Object next = filmer.next();
+            
+        }*/
+        
+        System.out.println(filmer);
     }
 }
 

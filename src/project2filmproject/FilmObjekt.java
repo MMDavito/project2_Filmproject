@@ -14,7 +14,7 @@ import java.sql.Date;
 public class FilmObjekt {
     public String Filmnamn; 
     public String Regissör;
-    public int Genre;
+    public String Genre;
     public int Längd; 
     public Date Release; 
     public int Betyg; 

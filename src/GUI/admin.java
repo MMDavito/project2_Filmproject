@@ -149,7 +149,7 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        comboGenreList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Action", "Comedy", "Romance", "War", "Documentery" }));
+        comboGenreList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Undefined", "Action", "Comedy", "Romance", "War", "Documentery", "Flumeri" }));
         comboGenreList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboGenreListActionPerformed(evt);
@@ -230,11 +230,11 @@ public class admin extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(listMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(add)
-                        .addGap(0, 17, Short.MAX_VALUE))
-                    .addComponent(listMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 17, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -338,23 +338,21 @@ public class admin extends javax.swing.JFrame {
         }
         try {
             FilmObjekt film = new FilmObjekt();
-            
-            
-            
+
             /*project2filmproject.FilmObjekt[] film = new project2filmproject.FilmObjekt[1];*/
             film.Filmnamn = this.filmnamn.getText();
             film.Regissör = this.regissör.getText();
             film.Beskrivning = this.beskrivning.getText();
-            film.Genre = this.comboGenreList.getSelectedIndex() + 1;
+            film.Genre = this.comboGenreList.getSelectedItem().toString();
             film.Längd = sekunder;
             film.Release = null;
             film.SettDatum = null;
             film.SettGånger = 0;
             film.Betyg = 0;
-            
+
             project2filmproject.FilmFörstörd.Seter(film);
-                    listMessage.setText("Inlägg lyckades");
-    }catch (Exception e) {
+            listMessage.setText("Inlägg lyckades");
+        } catch (Exception e) {
             listMessage.setText("Fyll i fält");
             System.out.println("Error " + e);
             /*String filmnamn = this.filmnamn.getText(),
@@ -375,10 +373,8 @@ public class admin extends javax.swing.JFrame {
 
             Date releasedatum, settDatum;
             int betyg, settGånger;*/
-            
-            /*project2filmproject.Set.Seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);*/
-            
 
+ /*project2filmproject.Set.Seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);*/
         }
 
 
@@ -414,37 +410,16 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_comboGenreListActionPerformed
 
     private void addListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addListActionPerformed
-        //SKICKA INMATAT VÄRDE TILL jComboBox        
-        int genreNummer = 0;
+        //SKICKA INMATAT VÄRDE TILL jComboBox 
         String kategorgi = tFGenre.getText().toLowerCase();
-
-        switch ((kategorgi)) {
-            case "action":
-                genreNummer = 1;
-                break;
-            case "comedy":
-                genreNummer = 2;
-                break;
-            case "romance":
-                genreNummer = 3;
-                break;
-            case "war":
-                genreNummer = 4;
-                break;
-            case "documentery":
-                genreNummer = 5;
-                break;
-            default:
-                listMessage.setText("Genre saknas");
-        }
-        if (kategorgi.isEmpty() == true) {
-            listMessage.setText("Fält är tomt");
-        }
-        //TÖMM MEDELANDE OM ANVÄNDARE GER KORREKT VÄRDE
-        if (genreNummer > 0) {
+        try {
+            omvandla.Strang.genreIdToString(omvandla.Strang.genreToId(kategorgi));
+            //TÖMM MEDELANDE OM ANVÄNDARE GER KORREKT VÄRDE
             listMessage.setText("");
+        } catch (Exception e) {
+            listMessage.setText("Genre saknas");
+            System.out.println("Fail " + e);
         }
-
         this.comboGenreList.setSelectedItem(omvandla.Strang.toFirstCap(kategorgi));
 
 

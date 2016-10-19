@@ -159,7 +159,7 @@ public class adminRedigera extends javax.swing.JFrame {
             }
         });
 
-        comboGenreList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Action", "Comedy", "Romance", "War", "Documentery" }));
+        comboGenreList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Undefined", "Action", "Comedy", "Romance", "War", "Documentery", "Flumeri" }));
         comboGenreList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboGenreListActionPerformed(evt);
@@ -398,13 +398,13 @@ public class adminRedigera extends javax.swing.JFrame {
             film.Filmnamn = this.newFilmnamn.getText();
             film.Regissör = this.regissör.getText();
             film.Beskrivning = this.beskrivning.getText();
-            film.Genre = this.comboGenreList.getSelectedIndex() + 1;
+            film.Genre = this.comboGenreList.getSelectedItem().toString();
             film.Längd = sekunder;
             film.Release = null;
             film.SettDatum = null;
             film.SettGånger = 0;
             film.Betyg = 0;
-            project2filmproject.FilmFörstörd.Change(gammalFilm, film);
+            project2filmproject.FilmFörstörd.change(gammalFilm, film);
                     listMessage.setText("Inlägg lyckades");
     }catch (Exception e) {
             listMessage.setText("Fyll i fält");
@@ -421,37 +421,16 @@ public class adminRedigera extends javax.swing.JFrame {
     }//GEN-LAST:event_comboGenreListActionPerformed
 
     private void addListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addListActionPerformed
-        //SKICKA INMATAT VÄRDE TILL jComboBox
-        int genreNummer = 0;
+        //SKICKA INMATAT VÄRDE TILL jComboBox 
         String kategorgi = tFGenre.getText().toLowerCase();
-
-        switch ((kategorgi)) {
-            case "action":
-                genreNummer = 1;
-                break;
-            case "comedy":
-                genreNummer = 2;
-                break;
-            case "romance":
-                genreNummer = 3;
-                break;
-            case "war":
-                genreNummer = 4;
-                break;
-            case "documentery":
-                genreNummer = 5;
-                break;
-            default:
-                listMessage.setText("Genre saknas");
-        }
-        if (kategorgi.isEmpty() == true) {
-            listMessage.setText("Fält är tomt");
-        }
-        //TÖMM MEDELANDE OM ANVÄNDARE GER KORREKT VÄRDE
-        if (genreNummer > 0) {
+        try {
+            omvandla.Strang.genreIdToString(omvandla.Strang.genreToId(kategorgi));
+            //TÖMM MEDELANDE OM ANVÄNDARE GER KORREKT VÄRDE
             listMessage.setText("");
+        } catch (Exception e) {
+            listMessage.setText("Genre saknas");
+            System.out.println("Fail " + e);
         }
-
         this.comboGenreList.setSelectedItem(omvandla.Strang.toFirstCap(kategorgi));
     }//GEN-LAST:event_addListActionPerformed
 
