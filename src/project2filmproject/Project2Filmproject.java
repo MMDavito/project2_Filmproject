@@ -21,20 +21,20 @@ public class Project2Filmproject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    ArrayList<FilmObjekt> filmer = new ArrayList<>();
+    /*ArrayList<FilmObjekt> filmer = new ArrayList<>();
         filmer = FilmFörstörd.getAllaFilmer();
 
         System.out.println(filmer.size());
         
         for(FilmObjekt film:filmer){
             
-            System.out.println("Filmnamn " + film.Regissör);
+            System.out.println("Filmnamn " + film.Genre);
             
-        }
-   /*FilmObjekt film = new FilmObjekt();
-   film = FilmFörstörd.getInfo("fsdfsd");
+        }*/
+   FilmObjekt film = new FilmObjekt();
+   film = FilmFörstörd.getInfo("filmnamn","fsdfsd");
         System.out.println("kommer ifrån main: "+film.Filmnamn);
-    }*/
+    }
 }
-}
+
 

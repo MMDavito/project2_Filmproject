@@ -24,22 +24,23 @@ public class adminRedigera extends javax.swing.JFrame {
      *
      *
      */
-    public static String filmensNamn = "";
+    public static String filmensNamn;
 
     public static void film(String filmNamn) {
         filmensNamn = filmNamn;
-        FilmObjekt nyFilm = new FilmObjekt();
-        nyFilm = project2filmproject.FilmFörstörd.getInfo(filmNamn);
-        nyFilm.Genre
-                //lägg till info
-        
+
+        //lägg till info
         /*mellanregister insert information ifrån "mellanregister", 
                 gör sedan om det och skriv ut det i alla rutorna.*/
     }
 
     public adminRedigera() {
         initComponents();
+        
+        FilmObjekt nyFilm = new FilmObjekt();
+        nyFilm = project2filmproject.FilmFörstörd.getInfo(filmensNamn);
         this.oldFilmnamn.setText(filmensNamn);
+        this.comboGenreList.setSelectedItem(nyFilm.Genre);
     }
 
     /**
@@ -386,9 +387,9 @@ public class adminRedigera extends javax.swing.JFrame {
     }//GEN-LAST:event_clearActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-   FilmObjekt film = new FilmObjekt();
-   String gammalFilm = this.oldFilmnamn.getText();
-   
+        FilmObjekt film = new FilmObjekt();
+        String gammalFilm = this.oldFilmnamn.getText();
+
         int tim = Integer.parseInt(this.timmar.getText());
         int min = Integer.parseInt(this.minuter.getText());
         int sekunder = 0;
@@ -398,7 +399,8 @@ public class adminRedigera extends javax.swing.JFrame {
         } catch (Exception e) {
             listMessage.setText("Fyll i korrekt tid");
             System.out.println("Error: " + e);
-        } try{
+        }
+        try {
             /*project2filmproject.FilmObjekt[] film = new project2filmproject.FilmObjekt[1];*/
             film.Filmnamn = this.newFilmnamn.getText();
             film.Regissör = this.regissör.getText();
@@ -410,11 +412,11 @@ public class adminRedigera extends javax.swing.JFrame {
             film.SettGånger = 0;
             film.Betyg = 0;
             project2filmproject.FilmFörstörd.change(gammalFilm, film);
-                    listMessage.setText("Inlägg lyckades");
-    }catch (Exception e) {
+            listMessage.setText("Inlägg lyckades");
+        } catch (Exception e) {
             listMessage.setText("Fyll i fält");
             System.out.println("Error " + e);
-    }
+        }
     }//GEN-LAST:event_addActionPerformed
 
     private void minuterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minuterActionPerformed
