@@ -28,6 +28,11 @@ public class adminRedigera extends javax.swing.JFrame {
 
     public static void film(String filmNamn) {
         filmensNamn = filmNamn;
+        FilmObjekt nyFilm = new FilmObjekt();
+        nyFilm = project2filmproject.FilmFörstörd.getInfo(filmNamn);
+        nyFilm.Genre
+                //lägg till info
+        
         /*mellanregister insert information ifrån "mellanregister", 
                 gör sedan om det och skriv ut det i alla rutorna.*/
     }

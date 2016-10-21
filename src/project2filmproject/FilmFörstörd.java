@@ -25,7 +25,7 @@ public class FilmFörstörd {
             int längd, Date release, int betyg, int settGånger, Date settDatum,
             String beskrivning)*/ {
         int regissör = 0;
-        int kategori =omvandla.Strang.genreToId(film.Genre);
+        int kategori = omvandla.Strang.genreToId(film.Genre);
         try {
             Connection connection = ConnectionFactory.getConnection();
             try {
@@ -151,34 +151,35 @@ public class FilmFörstörd {
     }
 
     //här följer metoder för att hämta information
-    public static List<FilmObjekt> GeterFilmnamn(String filmnamn) {
+    public static FilmObjekt GeterFilmnamn(String filmnamn) {
         //En dimension räcker i listan, då det är ett objekt, och var värde då representerar en tabel.
-        List<FilmObjekt> film = new ArrayList<FilmObjekt>();
-        film = getInfo("*", "filmnamn", filmnamn);
+        FilmObjekt film = new FilmObjekt();
+        film = getInfo(/*"*", "filmnamn",*/filmnamn);
 
         return film;
     }
+//Hämtar information om en bestämd film
 
-    public static ArrayList<FilmObjekt> getInfo(String SöktI, String söktNamn) {
+    public static FilmObjekt getInfo(String söktNamn) {
         FilmObjekt film = new FilmObjekt();
-
-        ResultSet rs = null;
         try {
 
             Connection connection = ConnectionFactory.getConnection();
-            String query = "SELECT * FROM filmregister WHERE ? = ? ";
+            String query = "SELECT * FROM filmregister WHERE `filmnamn` = ?;";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             /*preparedStatement.setString(1, sökt = *);*/
-            preparedStatement.setString(1, SöktI);
-            preparedStatement.setString(2, söktNamn);
-            rs = preparedStatement.executeQuery();
+            //preparedStatement.setString(1, "filmnamn");
+            preparedStatement.setString(1, söktNamn);
+            preparedStatement.executeQuery();
+            ResultSet rs = preparedStatement.getResultSet();
 
-            ArrayList<FilmObjekt> filmer = new ArrayList<>();
-            while (rs.next()) {
+            //problemet läggs in härSystem.out.println(filmer.size());
+            if (rs.next()) {
+
                 film.Filmnamn = rs.getString("filmnamn");
                 film.Regissör = regissörGet(film.Filmnamn);
-                film.Beskrivning = rs.getString(söktNamn);
+                film.Beskrivning = rs.getString("beskrivning");
                 film.Genre = genreGet(film.Filmnamn);
                 film.Längd = rs.getInt("längd");
                 film.Release = null;
@@ -186,44 +187,40 @@ public class FilmFörstörd {
                 film.SettGånger = 0;
                 film.Betyg = 0;
 
-        return filmer;
+                return film;
             }
 
             try {
-                try {
-
-                    connection.close();
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "misslyckades stänga connection " + e);
-                }
-
-                try {
-                    preparedStatement.close();
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "misslycakdes stänga prepared statement " + e);
-                }
-                try {
-                    rs.close();
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "misslycakdes stänga resultSet " + e);
-                }
+                connection.close();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "misslycakdes stänga connection " + e);
+                JOptionPane.showMessageDialog(null, "misslyckades stänga connection " + e);
             }
 
+            try {
+                preparedStatement.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "misslycakdes stänga prepared statement " + e);
+            }
+            try {
+                rs.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "misslycakdes stänga resultSet " + e);
+            }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Starta databasen ");
+            JOptionPane.showMessageDialog(null, "Fel i anslutningen/frågan");
             System.out.println("Connectionfel " + e);
         }
-    return null;
+
+        return film;
+
     }
-    public static String genreGet(String filmnamn){
-           String gen = "null";
+
+    public static String genreGet(String filmnamn) {
+        String gen = "";
         try {
             Connection connection = ConnectionFactory.getConnection();
 
             try {
-
                 //Ny querri där jag hämtar regissörens id 
                 String query = "SELECT Genre FROM genre WHERE id = "
                         + "(SELECT genre FROM filmregister WHERE filmnamn = ?);";
@@ -245,7 +242,7 @@ public class FilmFörstörd {
                 }
 
             } catch (Exception e) {
-                System.out.println("Query fail, regissörGet "+e);
+                System.out.println("Query fail, regissörGet " + e);
 
             }
 
@@ -262,7 +259,6 @@ public class FilmFörstörd {
             Connection connection = ConnectionFactory.getConnection();
 
             try {
-
                 //Ny querri där jag hämtar regissörens id 
                 String query = "SELECT namn FROM regissör WHERE id = "
                         + "(SELECT regissör FROM filmregister WHERE filmnamn = ?);";
@@ -284,7 +280,7 @@ public class FilmFörstörd {
                 }
 
             } catch (Exception e) {
-                System.out.println("Query fail, regissörGet "+e);
+                System.out.println("Query fail, regissörGet " + e);
 
             }
 
@@ -294,7 +290,63 @@ public class FilmFörstörd {
         return reg;
 
     }
-}
+//returnerar ALLA filmer ur databasen.
+    public static ArrayList<FilmObjekt> getAllaFilmer() {
+
+        ArrayList<FilmObjekt> filmer = new ArrayList<>();
+        try {
+            Connection connection = ConnectionFactory.getConnection();
+            String query = "SELECT * FROM filmregister;";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            /*preparedStatement.setString(1, sökt = *);*/
+            preparedStatement.executeQuery();
+            ResultSet rs = preparedStatement.getResultSet();
+
+            //problemet läggs in härSystem.out.println(filmer.size());
+            while (rs.next()) {
+                FilmObjekt film = new FilmObjekt();
+                film.Filmnamn = rs.getString("filmnamn");
+                film.Regissör = regissörGet(film.Filmnamn);
+                film.Beskrivning = rs.getString("beskrivning");
+                film.Genre = genreGet(film.Filmnamn);
+                film.Längd = rs.getInt("längd");
+                film.Release = null;
+                film.SettDatum = null;
+                film.SettGånger = 0;
+                film.Betyg = 0;
+
+                filmer.add(film);
+                System.out.println(filmer.size());
+            }
+
+  
+                try {
+                    connection.close();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "misslyckades stänga connection " + e);
+                }
+                try {
+                    preparedStatement.close();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "misslycakdes stänga prepared statement " + e);
+                }
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "misslycakdes stänga resultSet " + e);
+                }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Anslutningsproblem i getAllaFilmer");
+            System.out.println("Connectionfel " + e);
+
+        }
+        return filmer;
+
+    }
+    }
+
+
 
 /*public static void Redigera(String filmnamn){
 Redigera redigera = new Redigera();

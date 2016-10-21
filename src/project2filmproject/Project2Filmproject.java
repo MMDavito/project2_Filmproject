@@ -22,13 +22,19 @@ public class Project2Filmproject {
      */
     public static void main(String[] args) {
     ArrayList<FilmObjekt> filmer = new ArrayList<>();
-        filmer = FilmFörstörd.getInfo("filmnamn", "fsdfsd");
-        /*while (filmer.next()) {
-            Object next = filmer.next();
-            
-        }*/
+        filmer = FilmFörstörd.getAllaFilmer();
+
+        System.out.println(filmer.size());
         
-        System.out.println(filmer);
-    }
+        for(FilmObjekt film:filmer){
+            
+            System.out.println("Filmnamn " + film.Regissör);
+            
+        }
+   /*FilmObjekt film = new FilmObjekt();
+   film = FilmFörstörd.getInfo("fsdfsd");
+        System.out.println("kommer ifrån main: "+film.Filmnamn);
+    }*/
+}
 }
 
