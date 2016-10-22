@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Calendar;
+import omvandla.time;
 
 /**
  *
@@ -31,9 +32,14 @@ public class Project2Filmproject {
             System.out.println("Filmnamn " + film.Genre);
             
         }*/
-   FilmObjekt film = new FilmObjekt();
-   film = FilmFörstörd.getInfo("filmnamn","fsdfsd");
-        System.out.println("kommer ifrån main: "+film.Filmnamn);
+String minuter;
+String timmar;
+time tid = new time();
+        try {tid =omvandla.time.secToTime(-1);
+            System.out.println(time.timar+" Tim " + tid.minuter + " Min");
+            
+        } catch (Exception e) {System.out.println(e);
+        }
     }
 }
 

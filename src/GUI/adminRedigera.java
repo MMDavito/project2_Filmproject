@@ -7,6 +7,7 @@ package GUI;
 
 import java.sql.Date;
 import javax.swing.JOptionPane;
+import omvandla.time;
 import project2filmproject.FilmObjekt;
 
 /**
@@ -25,10 +26,18 @@ public class adminRedigera extends javax.swing.JFrame {
      *
      */
     public static String filmensNamn;
+    public static FilmObjekt nyFilm = new FilmObjekt();
+    public static time tid = new time();
 
     public static void film(String filmNamn) {
         filmensNamn = filmNamn;
+        nyFilm = project2filmproject.FilmFörstörd.GeterFilmnamn(filmensNamn);
+        try {
+            tid = omvandla.time.secToTime(nyFilm.Längd);
 
+        } catch (Exception e) {
+            System.out.println("Fel vid omvandling av tid " + e);
+        }
         //lägg till info
         /*mellanregister insert information ifrån "mellanregister", 
                 gör sedan om det och skriv ut det i alla rutorna.*/
@@ -36,11 +45,15 @@ public class adminRedigera extends javax.swing.JFrame {
 
     public adminRedigera() {
         initComponents();
-        
-        FilmObjekt nyFilm = new FilmObjekt();
-        nyFilm = project2filmproject.FilmFörstörd.getInfo(filmensNamn);
+
         this.oldFilmnamn.setText(filmensNamn);
+        this.newFilmnamn.setText(nyFilm.Filmnamn);
         this.comboGenreList.setSelectedItem(nyFilm.Genre);
+        this.regissör.setText(nyFilm.Regissör);
+        this.beskrivning.setText(nyFilm.Beskrivning);
+        this.timmar.setText(tid.timar);
+        this.minuter.setText(tid.minuter);
+        this.betyg.setText(Integer.toString(nyFilm.getBetyg()));
     }
 
     /**
@@ -379,11 +392,13 @@ public class adminRedigera extends javax.swing.JFrame {
         regissör.setText("");
         tFGenre.setText("");
         timmar.setText("");
+        minuter.setText("");
         releasedatum.setText("");
         betyg.setText("");
         settGånger.setText("");
         beskrivning.setText("");
         settDatum.setText("");
+
     }//GEN-LAST:event_clearActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
@@ -410,9 +425,10 @@ public class adminRedigera extends javax.swing.JFrame {
             film.Release = null;
             film.SettDatum = null;
             film.SettGånger = 0;
-            film.Betyg = 0;
+            film.setBetyg(Integer.parseInt(this.betyg.getText()));
             project2filmproject.FilmFörstörd.change(gammalFilm, film);
-            listMessage.setText("Inlägg lyckades");
+            JOptionPane.showMessageDialog(null, "Inlägg lyckades");
+            this.setVisible(false);
         } catch (Exception e) {
             listMessage.setText("Fyll i fält");
             System.out.println("Error " + e);
@@ -436,7 +452,7 @@ public class adminRedigera extends javax.swing.JFrame {
             listMessage.setText("");
         } catch (Exception e) {
             listMessage.setText("Genre saknas");
-            System.out.println("Fail " + e);
+            System.out.println("Fel " + e);
         }
         this.comboGenreList.setSelectedItem(omvandla.Strang.toFirstCap(kategorgi));
     }//GEN-LAST:event_addListActionPerformed

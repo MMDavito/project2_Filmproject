@@ -318,6 +318,7 @@ public class admin extends javax.swing.JFrame {
         regissör.setText("");
         tFGenre.setText("");
         timmar.setText("");
+        minuter.setText("");
         releasedatum.setText("");
         betyg.setText("");
         settGånger.setText("");
@@ -348,7 +349,7 @@ public class admin extends javax.swing.JFrame {
             film.Release = null;
             film.SettDatum = null;
             film.SettGånger = 0;
-            film.Betyg = 0;
+            film.setBetyg(Integer.parseInt(this.betyg.getText()));
 
             project2filmproject.FilmFörstörd.Seter(film);
             listMessage.setText("Inlägg lyckades");
@@ -418,7 +419,7 @@ public class admin extends javax.swing.JFrame {
             listMessage.setText("");
         } catch (Exception e) {
             listMessage.setText("Genre saknas");
-            System.out.println("Fail " + e);
+            System.out.println("Fel " + e);
         }
         this.comboGenreList.setSelectedItem(omvandla.Strang.toFirstCap(kategorgi));
 

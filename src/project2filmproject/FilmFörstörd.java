@@ -25,13 +25,11 @@ public class FilmFörstörd {
             int längd, Date release, int betyg, int settGånger, Date settDatum,
             String beskrivning)*/ {
         int regissör = 0;
+        regissör = regissörSet(film.Regissör);
         int kategori = omvandla.Strang.genreToId(film.Genre);
         try {
             Connection connection = ConnectionFactory.getConnection();
-            try {
-                regissör = regissörSet(film.Regissör);
-            } catch (Exception e) {
-            }
+
             try {
                 String query = "INSERT INTO filmregister (filmnamn, regissör, "
                         + "genre, längd, releasedatum, betyg, sett_gånger, "
@@ -43,11 +41,11 @@ public class FilmFörstörd {
 
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, film.Filmnamn.toLowerCase());
-                preparedStatement.setString(2, film.Regissör);
+                preparedStatement.setInt(2, regissör);
                 preparedStatement.setInt(3, kategori);
                 preparedStatement.setInt(4, film.Längd);
                 preparedStatement.setDate(5, film.Release);
-                preparedStatement.setInt(6, film.Betyg);
+                preparedStatement.setInt(6, film.getBetyg());
                 preparedStatement.setInt(7, film.SettGånger);
                 preparedStatement.setString(8, film.Beskrivning);
                 preparedStatement.setDate(9, film.SettDatum);
@@ -103,7 +101,7 @@ public class FilmFörstörd {
                     return reg;
 
                 } catch (Exception f) {
-
+                    System.out.println("Fel i hämning av id i regisörGet "+e);
                 }
             }
             try {
@@ -131,47 +129,37 @@ public class FilmFörstörd {
             Seter(film);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Starta databasen ");
+            JOptionPane.showMessageDialog(null, "Problem i change metoden");
             System.out.println("Connectionfel i change " + e);
         }
     }
 
-    public static void Delete(String filmnamn) {
+    public static void Delete(String filmnamn) throws Exception {
+        String gamalfilm = filmnamn.toLowerCase();
+        Connection connection = ConnectionFactory.getConnection();
+        String query = "DELETE FROM filmregister WHERE filmnamn = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, gamalfilm);
+        preparedStatement.execute();
         try {
-            Connection connection = ConnectionFactory.getConnection();
-            String query = "DELETE FROM filmregister WHERE filmnamn = ?";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, filmnamn);
-
+            preparedStatement.close();
+            connection.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Starta databasen ");
-            System.out.println("Connectionfel " + e);
         }
     }
-
-    //här följer metoder för att hämta information
-    public static FilmObjekt GeterFilmnamn(String filmnamn) {
-        //En dimension räcker i listan, då det är ett objekt, och var värde då representerar en tabel.
-        FilmObjekt film = new FilmObjekt();
-        film = getInfo("filmnamn", filmnamn);
-
-        return film;
-    }
 //Hämtar information om en bestämd film
-
-    public static FilmObjekt getInfo(String söktI, String söktNamn) {
+    public static FilmObjekt GeterFilmnamn(String söktNamn) {
         FilmObjekt film = new FilmObjekt();
         try {
 
             Connection connection = ConnectionFactory.getConnection();
-            String query = "SELECT * FROM filmregister WHERE " + söktI + " = ?;";
+            String query = "SELECT * FROM filmregister WHERE `filmnamn` = ?;";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             /*preparedStatement.setString(1, sökt = *);*/
             // preparedStatement.setString(1,söktI);
             preparedStatement.setString(1, söktNamn);
-            System.out.println(preparedStatement);
             preparedStatement.executeQuery();
             ResultSet rs = preparedStatement.getResultSet();
 
@@ -186,7 +174,7 @@ public class FilmFörstörd {
                 film.Release = null;
                 film.SettDatum = null;
                 film.SettGånger = 0;
-                film.Betyg = 0;
+                film.setBetyg(rs.getInt("betyg"));
 
                 return film;
             }
@@ -292,7 +280,7 @@ public class FilmFörstörd {
 
     }
 
-    public static ArrayList<FilmObjekt> getFilmAvGenre(String genrenNamn) {
+    public static ArrayList<FilmObjekt> getFilmerAvGenre(String genrenNamn) {
         int genreId = omvandla.Strang.genreToId(genrenNamn);
         ArrayList<FilmObjekt> filmer = new ArrayList<>();
 
@@ -314,21 +302,21 @@ public class FilmFörstörd {
                 film.Release = null;
                 film.SettDatum = null;
                 film.SettGånger = 0;
-                film.Betyg = 0;
+                film.setBetyg(rs.getInt("betyg"));
 
                 filmer.add(film);
-                System.out.println(filmer.size());
-                try {
-                    rs.close();
-                    preparedStatement.close();
-                    connection.close();
-                } catch (Exception e) {
-                    System.out.println("Lyckades inte stänga getFilmAvGenre " + e);
-                }
+            }
+            try {
+                rs.close();
+                preparedStatement.close();
+                connection.close();
+            } catch (Exception e) {
+                System.out.println("Lyckades inte stänga getFilmAvGenre " + e);
             }
         } catch (Exception e) {
             System.out.println("Anslutningsfel i getFilmAvGenre " + e);
-        }return filmer;
+        }
+        return filmer;
     }
     //returnerar ALLA filmer ur databasen.
 
@@ -355,7 +343,7 @@ public class FilmFörstörd {
                 film.Release = null;
                 film.SettDatum = null;
                 film.SettGånger = 0;
-                film.Betyg = 0;
+                film.setBetyg(rs.getInt("betyg"));
 
                 filmer.add(film);
                 System.out.println(filmer.size());

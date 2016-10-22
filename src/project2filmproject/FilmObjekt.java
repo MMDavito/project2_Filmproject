@@ -17,11 +17,20 @@ public class FilmObjekt {
     public String Genre;
     public int Längd; 
     public Date Release; 
-    public int Betyg; 
+    private int Betyg; 
     public int SettGånger;     
     public String Beskrivning;
     public Date SettDatum;
-}
+
+    public int getBetyg() {
+        return Betyg;
+    }
+
+    public void setBetyg(int Betyg) {
+        if (Betyg>=0 && Betyg<= 100){
+            this.Betyg = Betyg;}
+        else{this.Betyg = 0;}
+    }}
     //construktor
     /*public FilmObjekt(String filmnamn, String regissör, int genre,
             int längd, Date release, int betyg, int settGånger, Date settDatum,
