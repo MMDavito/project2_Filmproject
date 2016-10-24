@@ -27,7 +27,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -50,30 +53,17 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="genreDocumentery" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="genreUndefined" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                          <Component id="genreFlum" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="comboGenreList" min="-2" pref="113" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="genreAction" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="genreComedy" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="genreRomance" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="genreWar" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="164" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
-                  <Component id="allGenrer" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="106" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -81,66 +71,56 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="genreAction" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="genreComedy" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="genreRomance" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="genreWar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="allGenrer" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="genreUndefined" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="genreDocumentery" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="genreFlum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="195" max="32767" attributes="0"/>
+                  <Component id="comboGenreList" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="156" max="-2" attributes="0"/>
+                  <EmptySpace pref="104" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="genreAction">
+        <Component class="javax.swing.JComboBox" name="comboGenreList">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Action"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="8">
+                <StringItem index="0" value="All"/>
+                <StringItem index="1" value="Undefined"/>
+                <StringItem index="2" value="Action"/>
+                <StringItem index="3" value="Comedy"/>
+                <StringItem index="4" value="Romance"/>
+                <StringItem index="5" value="War"/>
+                <StringItem index="6" value="Documentery"/>
+                <StringItem index="7" value="Flumeri"/>
+              </StringArray>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboGenreListActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="genreComedy">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Comedy"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="genreRomance">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Romance"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="genreWar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="War"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="genreDocumentery">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Documentery"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="genreUndefined">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Undefined"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="genreFlum">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Flum"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="allGenrer">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Alla"/>
-          </Properties>
-        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JList" name="filmerJList">
+              <Properties>
+                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>

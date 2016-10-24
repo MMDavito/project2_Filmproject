@@ -5,6 +5,11 @@
  */
 package GUI;
 
+import java.util.ArrayList;
+import javax.swing.JList;
+import project2filmproject.FilmObjekt;
+import project2filmproject.FilmFörstörd;
+
 /**
  *
  * @author daca97002
@@ -16,6 +21,16 @@ public class outputTable extends javax.swing.JFrame {
      */
     public outputTable() {
         initComponents();
+        ArrayList<FilmObjekt> filmer = new ArrayList<>();
+        String valdGenre = comboGenreList.getSelectedItem().toString();
+        if (valdGenre.equals("All")){
+        filmer = FilmFörstörd.getAllaFilmer();
+            System.out.println("Mängden filmer "+filmer.size());
+        for(FilmObjekt film:filmer){
+            filmerJList = new JList(filmer.toArray());
+                
+            }
+        }
     }
 
     /**
@@ -29,85 +44,54 @@ public class outputTable extends javax.swing.JFrame {
 
         redigera1 = new GUI.Redigera();
         jPanel1 = new javax.swing.JPanel();
-        genreAction = new javax.swing.JButton();
-        genreComedy = new javax.swing.JButton();
-        genreRomance = new javax.swing.JButton();
-        genreWar = new javax.swing.JButton();
-        genreDocumentery = new javax.swing.JButton();
-        genreUndefined = new javax.swing.JButton();
-        genreFlum = new javax.swing.JButton();
-        allGenrer = new javax.swing.JButton();
+        comboGenreList = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        filmerJList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Välj genre av önskad film"));
 
-        genreAction.setText("Action");
+        comboGenreList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Undefined", "Action", "Comedy", "Romance", "War", "Documentery", "Flumeri" }));
+        comboGenreList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboGenreListActionPerformed(evt);
+            }
+        });
 
-        genreComedy.setText("Comedy");
-
-        genreRomance.setText("Romance");
-
-        genreWar.setText("War");
-
-        genreDocumentery.setText("Documentery");
-
-        genreUndefined.setText("Undefined");
-
-        genreFlum.setText("Flum");
-
-        allGenrer.setText("Alla");
+        jScrollPane1.setViewportView(filmerJList);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(genreDocumentery)
-                        .addGap(31, 31, 31)
-                        .addComponent(genreUndefined)
-                        .addGap(54, 54, 54)
-                        .addComponent(genreFlum))
+                        .addContainerGap()
+                        .addComponent(comboGenreList, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(genreAction)
-                        .addGap(18, 18, 18)
-                        .addComponent(genreComedy)
-                        .addGap(18, 18, 18)
-                        .addComponent(genreRomance)
-                        .addGap(18, 18, 18)
-                        .addComponent(genreWar)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(allGenrer)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(181, 181, 181)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(genreAction)
-                    .addComponent(genreComedy)
-                    .addComponent(genreRomance)
-                    .addComponent(genreWar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(allGenrer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(genreUndefined)
-                    .addComponent(genreDocumentery)
-                    .addComponent(genreFlum))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addComponent(comboGenreList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,6 +100,10 @@ public class outputTable extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboGenreListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGenreListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboGenreListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,15 +141,10 @@ public class outputTable extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton allGenrer;
-    private javax.swing.JButton genreAction;
-    private javax.swing.JButton genreComedy;
-    private javax.swing.JButton genreDocumentery;
-    private javax.swing.JButton genreFlum;
-    private javax.swing.JButton genreRomance;
-    private javax.swing.JButton genreUndefined;
-    private javax.swing.JButton genreWar;
+    private javax.swing.JComboBox<String> comboGenreList;
+    private javax.swing.JList<String> filmerJList;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private GUI.Redigera redigera1;
     // End of variables declaration//GEN-END:variables
 }
