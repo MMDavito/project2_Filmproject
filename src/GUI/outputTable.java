@@ -27,36 +27,34 @@ public class outputTable extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        redigera1 = new GUI.Redigera();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        genreAction = new javax.swing.JButton();
+        genreComedy = new javax.swing.JButton();
+        genreRomance = new javax.swing.JButton();
+        genreWar = new javax.swing.JButton();
+        genreDocumentery = new javax.swing.JButton();
+        genreUndefined = new javax.swing.JButton();
+        genreFlum = new javax.swing.JButton();
         allGenrer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Välj genre av önskad film"));
 
-        jButton1.setText("jButton1");
+        genreAction.setText("Action");
 
-        jButton2.setText("jButton1");
+        genreComedy.setText("Comedy");
 
-        jButton3.setText("jButton1");
+        genreRomance.setText("Romance");
 
-        jButton4.setText("jButton1");
+        genreWar.setText("War");
 
-        jButton5.setText("jButton1");
+        genreDocumentery.setText("Documentery");
 
-        jButton6.setText("jButton1");
+        genreUndefined.setText("Undefined");
 
-        jButton7.setText("jButton1");
-
-        jButton8.setText("jButton1");
+        genreFlum.setText("Flum");
 
         allGenrer.setText("Alla");
 
@@ -66,23 +64,21 @@ public class outputTable extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton8))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(genreDocumentery)
+                        .addGap(31, 31, 31)
+                        .addComponent(genreUndefined)
+                        .addGap(54, 54, 54)
+                        .addComponent(genreFlum))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(genreAction)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(genreComedy)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(genreRomance)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)))
-                .addGap(0, 49, Short.MAX_VALUE))
+                        .addComponent(genreWar)))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(137, 137, 137)
                 .addComponent(allGenrer)
@@ -93,26 +89,25 @@ public class outputTable extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(genreAction)
+                    .addComponent(genreComedy)
+                    .addComponent(genreRomance)
+                    .addComponent(genreWar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(allGenrer)
-                .addGap(22, 22, 22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
-                .addContainerGap(184, Short.MAX_VALUE))
+                    .addComponent(genreUndefined)
+                    .addComponent(genreDocumentery)
+                    .addComponent(genreFlum))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,14 +154,14 @@ public class outputTable extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton allGenrer;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton genreAction;
+    private javax.swing.JButton genreComedy;
+    private javax.swing.JButton genreDocumentery;
+    private javax.swing.JButton genreFlum;
+    private javax.swing.JButton genreRomance;
+    private javax.swing.JButton genreUndefined;
+    private javax.swing.JButton genreWar;
     private javax.swing.JPanel jPanel1;
+    private GUI.Redigera redigera1;
     // End of variables declaration//GEN-END:variables
 }
