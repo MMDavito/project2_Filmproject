@@ -8,8 +8,11 @@ package GUI;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.table.DefaultTableModel;
+import omvandla.time;
 import project2filmproject.FilmObjekt;
 import project2filmproject.FilmFörstörd;
+
 
 /**
  *
@@ -125,13 +128,25 @@ public class outputTable extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboGenreListActionPerformed
 
+String tim;
+String min;
+time tid = new time();
+String langd;
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
+DefaultTableModel model = (DefaultTableModel) this.tableFilmer.getModel();
 ArrayList<FilmObjekt> filmer = new ArrayList<>();
+        System.out.println(filmer.size());
         String valdGenre = comboGenreList.getSelectedItem().toString();
         if (valdGenre.equals("All")){
             filmer = FilmFörstörd.getAllaFilmer();
             for (FilmObjekt film:filmer) {
-                this.
+                try {tid = omvandla.time.secToTime(film.Längd);
+                langd = tid.toString();
+                
+                } catch (Exception e) {System.out.println("Tid är fel "+e);
+                }
+                model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning});
+                
             }
         }
     }//GEN-LAST:event_okBtnActionPerformed
