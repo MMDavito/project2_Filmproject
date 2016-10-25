@@ -46,4 +46,9 @@ int tim = 0;
         tid.timar = Integer.toString(tim);
                 return tid;
 }
+    @Override 
+    public String toString(){
+    String tid = timar+":"+minuter;
+    return tid;
+    }
 }
