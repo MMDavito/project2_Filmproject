@@ -138,6 +138,8 @@ ArrayList<FilmObjekt> filmer = new ArrayList<>();
         System.out.println(filmer.size());
         String valdGenre = comboGenreList.getSelectedItem().toString();
         if (valdGenre.equals("All")){
+            model.getDataVector().removeAllElements();
+            model.fireTableDataChanged();
             filmer = FilmFörstörd.getAllaFilmer();
             for (FilmObjekt film:filmer) {
                 try {tid = omvandla.time.secToTime(film.Längd);
@@ -145,8 +147,20 @@ ArrayList<FilmObjekt> filmer = new ArrayList<>();
                 
                 } catch (Exception e) {System.out.println("Tid är fel "+e);
                 }
-                model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning});
+                model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning});                
+            }
+        }else{
+            model.getDataVector().removeAllElements();
+            model.fireTableDataChanged();
+        filmer = FilmFörstörd.getFilmerAvGenre(valdGenre);
+            System.out.println(filmer.size());
+            for (FilmObjekt film:filmer) {
+                try {tid = omvandla.time.secToTime(film.Längd);
+                langd = tid.toString();
                 
+                } catch (Exception e) {System.out.println("Tid är fel "+e);
+                }
+                model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning});        
             }
         }
     }//GEN-LAST:event_okBtnActionPerformed
