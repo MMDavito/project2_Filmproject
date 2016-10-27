@@ -44,7 +44,7 @@ public class FilmFörstörd {
                 preparedStatement.setInt(2, regissör);
                 preparedStatement.setInt(3, kategori);
                 preparedStatement.setInt(4, film.Längd);
-                preparedStatement.setDate(5, film.Release);
+                preparedStatement.setString(5, film.getRelease());
                 preparedStatement.setInt(6, film.getBetyg());
                 preparedStatement.setInt(7, film.SettGånger);
                 preparedStatement.setString(8, film.Beskrivning);
@@ -171,7 +171,7 @@ public class FilmFörstörd {
                 film.Beskrivning = rs.getString("beskrivning");
                 film.Genre = genreGet(film.Filmnamn);
                 film.Längd = rs.getInt("längd");
-                film.Release = null;
+                film.setRelease(rs.getString("releasedatum"));
                 film.SettDatum = null;
                 film.SettGånger = 0;
                 film.setBetyg(rs.getInt("betyg"));
@@ -299,7 +299,7 @@ public class FilmFörstörd {
                 film.Beskrivning = rs.getString("beskrivning");
                 film.Genre = genreGet(film.Filmnamn);
                 film.Längd = rs.getInt("längd");
-                film.Release = null;
+                film.setRelease(rs.getString("releasedatum"));
                 film.SettDatum = null;
                 film.SettGånger = 0;
                 film.setBetyg(rs.getInt("betyg"));
@@ -340,7 +340,7 @@ public class FilmFörstörd {
                 film.Beskrivning = rs.getString("beskrivning");
                 film.Genre = genreGet(film.Filmnamn);
                 film.Längd = rs.getInt("längd");
-                film.Release = null;
+                film.setRelease(rs.getString("releasedatum"));
                 film.SettDatum = null;
                 film.SettGånger = 0;
                 film.setBetyg(rs.getInt("betyg"));

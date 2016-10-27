@@ -6,6 +6,7 @@
 package project2filmproject;
 
 import java.sql.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,7 +17,19 @@ public class FilmObjekt {
     public String Regissör;
     public String Genre;
     public int Längd; 
-    public Date Release; 
+    private String Release; 
+
+    public String getRelease() {
+        return Release;
+    }
+
+    public void setRelease(String Release) {
+        int år = Integer.parseInt(Release);
+        if(år>1900 && år <2200){
+        this.Release = Release;
+        }
+        else JOptionPane.showMessageDialog(null, "Saknar giltigt datum för filmen");
+    }
     private int Betyg; 
     public int SettGånger;     
     public String Beskrivning;

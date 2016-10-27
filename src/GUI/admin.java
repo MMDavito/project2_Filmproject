@@ -346,7 +346,7 @@ public class admin extends javax.swing.JFrame {
             film.Beskrivning = this.beskrivning.getText();
             film.Genre = this.comboGenreList.getSelectedItem().toString();
             film.Längd = sekunder;
-            film.Release = null;
+            film.setRelease(this.releasedatum.toString());
             film.SettDatum = null;
             film.SettGånger = 0;
             film.setBetyg(Integer.parseInt(this.betyg.getText()));

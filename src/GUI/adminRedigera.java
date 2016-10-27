@@ -384,7 +384,7 @@ public class adminRedigera extends javax.swing.JFrame {
     }//GEN-LAST:event_betygActionPerformed
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
-        System.exit(0);
+        this.setVisible(false);
     }//GEN-LAST:event_logOutActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
@@ -422,7 +422,7 @@ public class adminRedigera extends javax.swing.JFrame {
             film.Beskrivning = this.beskrivning.getText();
             film.Genre = this.comboGenreList.getSelectedItem().toString();
             film.Längd = sekunder;
-            film.Release = null;
+            film.setRelease(this.releasedatum.toString());
             film.SettDatum = null;
             film.SettGånger = 0;
             film.setBetyg(Integer.parseInt(this.betyg.getText()));
