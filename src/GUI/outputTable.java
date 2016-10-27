@@ -25,6 +25,7 @@ public class outputTable extends javax.swing.JFrame {
      */
     public outputTable() {
         initComponents();
+        tableFilmer.setAutoCreateRowSorter(true);
              
             
         
