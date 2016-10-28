@@ -8,6 +8,7 @@ package GUI;
 import java.sql.Date;
 import java.sql.Time;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import project2filmproject.FilmObjekt;
 
@@ -350,7 +351,8 @@ public class admin extends javax.swing.JFrame {
             film.SettDatum = null;
             film.SettGånger = 0;
             film.setBetyg(Integer.parseInt(this.betyg.getText()));
-
+            //Fel härnånstans 
+            JOptionPane.showMessageDialog(null, "år "+ film.getRelease()+ " betyg "+ film.getBetyg());
             project2filmproject.FilmFörstörd.Seter(film);
             listMessage.setText("Inlägg lyckades");
         } catch (Exception e) {
