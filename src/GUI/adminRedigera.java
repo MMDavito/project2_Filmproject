@@ -54,6 +54,7 @@ public class adminRedigera extends javax.swing.JFrame {
         this.timmar.setText(tid.timar);
         this.minuter.setText(tid.minuter);
         this.betyg.setText(Integer.toString(nyFilm.getBetyg()));
+        this.releasedatum.setText(nyFilm.getRelease());
     }
 
     /**
@@ -77,10 +78,6 @@ public class adminRedigera extends javax.swing.JFrame {
         releasedatum = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         betyg = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        settGånger = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        settDatum = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         beskrivning = new javax.swing.JTextArea();
@@ -139,10 +136,6 @@ public class adminRedigera extends javax.swing.JFrame {
                 betygActionPerformed(evt);
             }
         });
-
-        jLabel7.setText("Sett gånger");
-
-        jLabel8.setText("Sett datum");
 
         jLabel9.setText("Beskrivning");
 
@@ -219,21 +212,13 @@ public class adminRedigera extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(33, 33, 33)
-                                .addComponent(settDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
                                 .addComponent(releasedatum, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(settGånger, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(betyg, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel6)
+                                .addGap(58, 58, 58)
+                                .addComponent(betyg, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -330,15 +315,7 @@ public class adminRedigera extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(betyg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(settGånger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(settDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)))
+                            .addComponent(jLabel6)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -395,9 +372,7 @@ public class adminRedigera extends javax.swing.JFrame {
         minuter.setText("");
         releasedatum.setText("");
         betyg.setText("");
-        settGånger.setText("");
         beskrivning.setText("");
-        settDatum.setText("");
 
     }//GEN-LAST:event_clearActionPerformed
 
@@ -405,10 +380,12 @@ public class adminRedigera extends javax.swing.JFrame {
         FilmObjekt film = new FilmObjekt();
         String gammalFilm = this.oldFilmnamn.getText();
 
-        int tim = Integer.parseInt(this.timmar.getText());
-        int min = Integer.parseInt(this.minuter.getText());
+        int tim; 
+        int min;
         int sekunder = 0;
         try {
+            min = Integer.parseInt(this.minuter.getText());
+            tim= Integer.parseInt(this.timmar.getText());
             sekunder = omvandla.time.timeToSec(tim, min);
 
         } catch (Exception e) {
@@ -422,7 +399,7 @@ public class adminRedigera extends javax.swing.JFrame {
             film.Beskrivning = this.beskrivning.getText();
             film.Genre = this.comboGenreList.getSelectedItem().toString();
             film.Längd = sekunder;
-            film.setRelease(this.releasedatum.toString());
+            film.setRelease(this.releasedatum.getText().toString());
             film.SettDatum = null;
             film.SettGånger = 0;
             film.setBetyg(Integer.parseInt(this.betyg.getText()));
@@ -525,8 +502,6 @@ public class adminRedigera extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -539,8 +514,6 @@ public class adminRedigera extends javax.swing.JFrame {
     private javax.swing.JLabel oldFilmnamn;
     private javax.swing.JTextField regissör;
     private javax.swing.JTextField releasedatum;
-    private javax.swing.JTextField settDatum;
-    private javax.swing.JTextField settGånger;
     private javax.swing.JTextField tFGenre;
     private javax.swing.JTextField timmar;
     // End of variables declaration//GEN-END:variables

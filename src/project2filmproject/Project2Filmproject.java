@@ -22,16 +22,17 @@ public class Project2Filmproject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*ArrayList<FilmObjekt> filmer = new ArrayList<>();
+        ArrayList<FilmObjekt> filmer = new ArrayList<>();
         filmer = FilmFörstörd.getAllaFilmer();
 
-        System.out.println(filmer.size());
+       
         
         for(FilmObjekt film:filmer){
             
-            System.out.println("Filmnamn " + film.Genre);
+            System.out.println(film.Filmnamn+" " + film.getRelease());
             
-        }*/
+        }
+        /*
         int minuter;
         int timmar;
         int sekunder;
@@ -44,7 +45,7 @@ public class Project2Filmproject {
             System.out.println(time.timar + " Tim " + tid.minuter + " Min");
         } catch (Exception e) {
             System.out.println("Format fel i tid " + e);
-        }
+        }*/
 
     }
 }

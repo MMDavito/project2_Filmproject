@@ -148,7 +148,7 @@ ArrayList<FilmObjekt> filmer = new ArrayList<>();
                 
                 } catch (Exception e) {System.out.println("Tid är fel "+e);
                 }
-                model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning});                
+                model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning, film.getRelease()});                
             }
         }else{
             model.getDataVector().removeAllElements();
@@ -157,11 +157,11 @@ ArrayList<FilmObjekt> filmer = new ArrayList<>();
             System.out.println(filmer.size());
             for (FilmObjekt film:filmer) {
                 try {tid = omvandla.time.secToTime(film.Längd);
-                langd = tid.toString();
-                
+                langd = tid.toString();                
                 } catch (Exception e) {System.out.println("Tid är fel "+e);
                 }
-                model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning});        
+                System.out.println(film.getRelease());
+                model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning, film.getRelease()});        
             }
         }
     }//GEN-LAST:event_okBtnActionPerformed

@@ -47,10 +47,6 @@ public class admin extends javax.swing.JFrame {
         releasedatum = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         betyg = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        settGånger = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        settDatum = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         beskrivning = new javax.swing.JTextArea();
@@ -104,6 +100,12 @@ public class admin extends javax.swing.JFrame {
 
         jLabel5.setText("Releasedatum");
 
+        releasedatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                releasedatumActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("Betyg");
 
         betyg.addActionListener(new java.awt.event.ActionListener() {
@@ -111,10 +113,6 @@ public class admin extends javax.swing.JFrame {
                 betygActionPerformed(evt);
             }
         });
-
-        jLabel7.setText("Sett gånger");
-
-        jLabel8.setText("Sett datum");
 
         jLabel9.setText("Beskrivning");
 
@@ -182,22 +180,6 @@ public class admin extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(33, 33, 33)
-                                .addComponent(settDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(releasedatum, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(settGånger, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(betyg, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -218,7 +200,18 @@ public class admin extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(timmar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addComponent(jLabel9))))
+                                .addComponent(jLabel9))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(releasedatum, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(58, 58, 58)
+                                        .addComponent(betyg, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,15 +271,7 @@ public class admin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(betyg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(settGånger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(settDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)))
+                            .addComponent(jLabel6)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -310,28 +295,36 @@ public class admin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void filmnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmnamnActionPerformed
+    private void addListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addListActionPerformed
+        //SKICKA INMATAT VÄRDE TILL jComboBox
+        String kategorgi = tFGenre.getText().toLowerCase();
+        try {
+            omvandla.Strang.genreIdToString(omvandla.Strang.genreToId(kategorgi));
+            //TÖMM MEDELANDE OM ANVÄNDARE GER KORREKT VÄRDE
+            listMessage.setText("");
+        } catch (Exception e) {
+            listMessage.setText("Genre saknas");
+            System.out.println("Fel " + e);
+        }
+        this.comboGenreList.setSelectedItem(omvandla.Strang.toFirstCap(kategorgi));
 
-    }//GEN-LAST:event_filmnamnActionPerformed
+    }//GEN-LAST:event_addListActionPerformed
 
-    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-        filmnamn.setText("");
-        regissör.setText("");
-        tFGenre.setText("");
-        timmar.setText("");
-        minuter.setText("");
-        releasedatum.setText("");
-        betyg.setText("");
-        settGånger.setText("");
-        beskrivning.setText("");
-        settDatum.setText("");
-    }//GEN-LAST:event_clearActionPerformed
+    private void comboGenreListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGenreListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboGenreListActionPerformed
+
+    private void minuterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minuterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_minuterActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        int tim = Integer.parseInt(this.timmar.getText());
-        int min = Integer.parseInt(this.minuter.getText());
+        int tim;
+        int min;
         int sekunder = 0;
         try {
+            min = Integer.parseInt(this.minuter.getText());
+            tim= Integer.parseInt(this.timmar.getText());
             sekunder = omvandla.time.timeToSec(tim, min);
 
         } catch (Exception e) {
@@ -347,11 +340,11 @@ public class admin extends javax.swing.JFrame {
             film.Beskrivning = this.beskrivning.getText();
             film.Genre = this.comboGenreList.getSelectedItem().toString();
             film.Längd = sekunder;
-            film.setRelease(this.releasedatum.toString());
+            film.setRelease(this.releasedatum.getText());
             film.SettDatum = null;
             film.SettGånger = 0;
             film.setBetyg(Integer.parseInt(this.betyg.getText()));
-            //Fel härnånstans 
+            //Fel härnånstans
             JOptionPane.showMessageDialog(null, "år "+ film.getRelease()+ " betyg "+ film.getBetyg());
             project2filmproject.FilmFörstörd.Seter(film);
             listMessage.setText("Inlägg lyckades");
@@ -359,8 +352,8 @@ public class admin extends javax.swing.JFrame {
             listMessage.setText("Fyll i fält");
             System.out.println("Error " + e);
             /*String filmnamn = this.filmnamn.getText(),
-                   regissör = this.regissör.getText(),
-                   beskrivning = this.beskrivning.getText();
+            regissör = this.regissör.getText(),
+            beskrivning = this.beskrivning.getText();
 
             int genre = this.comboGenreList.getSelectedIndex()+1;
             int tim = Integer.parseInt(this.timmar.getText());
@@ -377,15 +370,33 @@ public class admin extends javax.swing.JFrame {
             Date releasedatum, settDatum;
             int betyg, settGånger;*/
 
- /*project2filmproject.Set.Seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);*/
+            /*project2filmproject.Set.Seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);*/
         }
 
-
     }//GEN-LAST:event_addActionPerformed
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+        filmnamn.setText("");
+        regissör.setText("");
+        tFGenre.setText("");
+        timmar.setText("");
+        minuter.setText("");
+        releasedatum.setText("");
+        betyg.setText("");
+        beskrivning.setText("");        
+    }//GEN-LAST:event_clearActionPerformed
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
         System.exit(0);
     }//GEN-LAST:event_logOutActionPerformed
+
+    private void betygActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_betygActionPerformed
+
+    private void releasedatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_releasedatumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_releasedatumActionPerformed
 
     private void timmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timmarActionPerformed
         /*try {
@@ -393,44 +404,19 @@ public class admin extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Felmedelande: "+e);
         }*/
-
     }//GEN-LAST:event_timmarActionPerformed
 
-    private void minuterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minuterActionPerformed
+    private void tFGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFGenreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_minuterActionPerformed
-
-    private void betygActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_betygActionPerformed
+    }//GEN-LAST:event_tFGenreActionPerformed
 
     private void regissörActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regissörActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_regissörActionPerformed
 
-    private void comboGenreListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGenreListActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboGenreListActionPerformed
+    private void filmnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmnamnActionPerformed
 
-    private void addListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addListActionPerformed
-        //SKICKA INMATAT VÄRDE TILL jComboBox 
-        String kategorgi = tFGenre.getText().toLowerCase();
-        try {
-            omvandla.Strang.genreIdToString(omvandla.Strang.genreToId(kategorgi));
-            //TÖMM MEDELANDE OM ANVÄNDARE GER KORREKT VÄRDE
-            listMessage.setText("");
-        } catch (Exception e) {
-            listMessage.setText("Genre saknas");
-            System.out.println("Fel " + e);
-        }
-        this.comboGenreList.setSelectedItem(omvandla.Strang.toFirstCap(kategorgi));
-
-
-    }//GEN-LAST:event_addListActionPerformed
-
-    private void tFGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFGenreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tFGenreActionPerformed
+    }//GEN-LAST:event_filmnamnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -482,8 +468,6 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -494,8 +478,6 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JTextField minuter;
     private javax.swing.JTextField regissör;
     private javax.swing.JTextField releasedatum;
-    private javax.swing.JTextField settDatum;
-    private javax.swing.JTextField settGånger;
     private javax.swing.JTextField tFGenre;
     private javax.swing.JTextField timmar;
     // End of variables declaration//GEN-END:variables
