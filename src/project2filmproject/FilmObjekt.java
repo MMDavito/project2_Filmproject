@@ -27,20 +27,23 @@ public class FilmObjekt {
     public void setRelease(String Release) {
         try {
             int år = Integer.parseInt(Release);
-        if (år > 1900 && år < 2200) {
-            this.Release = Release;
-        }else {
-            JOptionPane.showMessageDialog(null, "Saknar giltigt datum för filmen");
-            this.Release = "0";
-        }
-            
-        } catch (Exception e) { System.out.println("Fail i omvandling av release till int "+e);
-        this.Release = "";
-        }
-        
+            if (år > 1900 && år < 2200) {
+                this.Release = Release;
+            } else {
+                JOptionPane.showMessageDialog(null, "Saknar giltigt datum för filmen");
+                this.Release = "0";
+            }
 
-
+        } catch (Exception e) {
+            System.out.println("Fail i omvandling av release till int " + e);
+            this.Release = "";
+        }
     }
+
+    public void dbSetRelease(String Release) {
+        this.Release = Release;
+    }
+
     private int Betyg;
     public int SettGånger;
     public String Beskrivning;

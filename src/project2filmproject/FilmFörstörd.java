@@ -299,7 +299,7 @@ public class FilmFörstörd {
                 film.Beskrivning = rs.getString("beskrivning");
                 film.Genre = genreGet(film.Filmnamn);
                 film.Längd = rs.getInt("längd");
-                film.setRelease(rs.getString("releasedatum"));
+                film.dbSetRelease(rs.getString("releasedatum"));
                 film.SettDatum = null;
                 film.SettGånger = 0;
                 film.setBetyg(rs.getInt("betyg"));
@@ -340,7 +340,7 @@ public class FilmFörstörd {
                 film.Beskrivning = rs.getString("beskrivning");
                 film.Genre = genreGet(film.Filmnamn);
                 film.Längd = rs.getInt("längd");
-                film.setRelease("releasedatum");
+                film.dbSetRelease(rs.getString("releasedatum"));
                 film.SettDatum = null;
                 film.SettGånger = 0;
                 film.setBetyg(rs.getInt("betyg"));
