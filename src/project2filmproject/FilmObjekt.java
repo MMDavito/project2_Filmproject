@@ -19,6 +19,8 @@ public class FilmObjekt {
     public String Genre;
     public int Längd;
     private String Release;
+    private int Betyg;
+    public String Beskrivning;
 
     public String getRelease() {
         return Release;
@@ -43,9 +45,6 @@ public class FilmObjekt {
     public void dbSetRelease(String Release) {
         this.Release = Release;
     }
-
-    private int Betyg;
-    public String Beskrivning;
 
     public int getBetyg() {
         return Betyg;

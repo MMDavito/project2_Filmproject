@@ -379,7 +379,7 @@ public class adminRedigera extends javax.swing.JFrame {
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         FilmObjekt film = new FilmObjekt();
         String gammalFilm = this.oldFilmnamn.getText();
-        if (this.newFilmnamn.toString().length() <= 40 && this.regissör.toString().length() <= 60) {
+        if (this.newFilmnamn.toString().length() <= 40 && this.regissör.toString().length() <= 60 && this.beskrivning.toString().length() <= 500) {
             int tim;
             int min;
             int sekunder = 0;
@@ -399,7 +399,7 @@ public class adminRedigera extends javax.swing.JFrame {
                 film.Beskrivning = this.beskrivning.getText();
                 film.Genre = this.comboGenreList.getSelectedItem().toString();
                 film.Längd = sekunder;
-                film.setRelease(this.releasedatum.getText().toString());
+                film.setRelease(this.releasedatum.getText());
                 film.setBetyg(Integer.parseInt(this.betyg.getText()));
                 project2filmproject.FilmFörstörd.change(gammalFilm, film);
                 JOptionPane.showMessageDialog(null, "Inlägg lyckades");
@@ -408,8 +408,12 @@ public class adminRedigera extends javax.swing.JFrame {
                 listMessage.setText("Fyll i fält");
                 System.out.println("Error " + e);
             }
+        } else if (this.newFilmnamn == null || this.regissör == null) {
+            this.listMessage.setText("Fyll i fält");
         } else {
-            this.listMessage.setText("Regissörnamn, max 60 tecken, Filmnamn max 40");
+            
+            this.listMessage.setText("Regissörnamn, max 60 tecken, Filmnamn max 40 "
+                    + "beskrivning max 500");
         }
 
     }//GEN-LAST:event_addActionPerformed

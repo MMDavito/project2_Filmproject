@@ -319,6 +319,9 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_minuterActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        System.out.println(this.filmnamn.getText().toString());
+        
+        
         if (this.filmnamn.toString().length() <= 40 && this.regissör.toString().length() <= 60) {
             int tim;
             int min;
@@ -351,31 +354,12 @@ public class admin extends javax.swing.JFrame {
                 listMessage.setText("Fyll i fält");
                 System.out.println("Error " + e);
             }
-        } else {
-            this.listMessage.setText("Regissörnamn, max 60 tecken, Filmnamn max 40");
+        }else if (this.regissör.getText() == "" || this.filmnamn.getText() == "") {
+            this.listMessage.setText("måste fyllas i");
+        } else{
+            this.listMessage.setText("Regissörnamn, max 60 tecken, Filmnamn max 40 "
+                    + "beskrivning max 500");
         }
-
-        /*String filmnamn = this.filmnamn.getText(),
-            regissör = this.regissör.getText(),
-            beskrivning = this.beskrivning.getText();
-
-            int genre = this.comboGenreList.getSelectedIndex()+1;
-            int tim = Integer.parseInt(this.timmar.getText());
-            int min = Integer.parseInt(this.minuter.getText());
-            int sekunder = 0;
-            try {
-                sekunder = omvandla.time.timeToSec(tim, min);
-
-            } catch (Exception e) {
-                listMessage.setText("Fyll i korrekt tid");
-                System.out.println("Error: " + e);
-            }
-
-            Date releasedatum, settDatum;
-            int betyg, settGånger;*/
-
- /*project2filmproject.Set.Seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);*/
-
     }//GEN-LAST:event_addActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
