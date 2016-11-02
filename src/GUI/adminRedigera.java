@@ -379,37 +379,39 @@ public class adminRedigera extends javax.swing.JFrame {
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         FilmObjekt film = new FilmObjekt();
         String gammalFilm = this.oldFilmnamn.getText();
+        if (this.newFilmnamn.toString().length() <= 40 && this.regissör.toString().length() <= 60) {
+            int tim;
+            int min;
+            int sekunder = 0;
+            try {
+                min = Integer.parseInt(this.minuter.getText());
+                tim = Integer.parseInt(this.timmar.getText());
+                sekunder = omvandla.time.timeToSec(tim, min);
 
-        int tim; 
-        int min;
-        int sekunder = 0;
-        try {
-            min = Integer.parseInt(this.minuter.getText());
-            tim= Integer.parseInt(this.timmar.getText());
-            sekunder = omvandla.time.timeToSec(tim, min);
+            } catch (Exception e) {
+                listMessage.setText("Fyll i korrekt tid");
+                System.out.println("Error: " + e);
+            }
+            try {
+                /*project2filmproject.FilmObjekt[] film = new project2filmproject.FilmObjekt[1];*/
+                film.Filmnamn = this.newFilmnamn.getText();
+                film.Regissör = this.regissör.getText();
+                film.Beskrivning = this.beskrivning.getText();
+                film.Genre = this.comboGenreList.getSelectedItem().toString();
+                film.Längd = sekunder;
+                film.setRelease(this.releasedatum.getText().toString());
+                film.setBetyg(Integer.parseInt(this.betyg.getText()));
+                project2filmproject.FilmFörstörd.change(gammalFilm, film);
+                JOptionPane.showMessageDialog(null, "Inlägg lyckades");
+                this.setVisible(false);
+            } catch (Exception e) {
+                listMessage.setText("Fyll i fält");
+                System.out.println("Error " + e);
+            }
+        } else {
+            this.listMessage.setText("Regissörnamn, max 60 tecken, Filmnamn max 40");
+        }
 
-        } catch (Exception e) {
-            listMessage.setText("Fyll i korrekt tid");
-            System.out.println("Error: " + e);
-        }
-        try {
-            /*project2filmproject.FilmObjekt[] film = new project2filmproject.FilmObjekt[1];*/
-            film.Filmnamn = this.newFilmnamn.getText();
-            film.Regissör = this.regissör.getText();
-            film.Beskrivning = this.beskrivning.getText();
-            film.Genre = this.comboGenreList.getSelectedItem().toString();
-            film.Längd = sekunder;
-            film.setRelease(this.releasedatum.getText().toString());
-            film.SettDatum = null;
-            film.SettGånger = 0;
-            film.setBetyg(Integer.parseInt(this.betyg.getText()));
-            project2filmproject.FilmFörstörd.change(gammalFilm, film);
-            JOptionPane.showMessageDialog(null, "Inlägg lyckades");
-            this.setVisible(false);
-        } catch (Exception e) {
-            listMessage.setText("Fyll i fält");
-            System.out.println("Error " + e);
-        }
     }//GEN-LAST:event_addActionPerformed
 
     private void minuterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minuterActionPerformed

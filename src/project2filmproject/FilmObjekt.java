@@ -45,9 +45,7 @@ public class FilmObjekt {
     }
 
     private int Betyg;
-    public int SettGånger;
     public String Beskrivning;
-    public Date SettDatum;
 
     public int getBetyg() {
         return Betyg;

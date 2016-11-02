@@ -5,6 +5,7 @@
  */
 package project2filmproject;
 
+import GUI.Start;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -22,6 +23,12 @@ public class Project2Filmproject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        GUI.Start start = new Start();
+        start.setVisible(true);
+        
+        
+        /*FÖR TEST
+        
         ArrayList<FilmObjekt> filmer = new ArrayList<>();
         filmer = FilmFörstörd.getAllaFilmer();
 
@@ -31,7 +38,7 @@ public class Project2Filmproject {
             
             System.out.println(film.Filmnamn+" " + film.getRelease());
             
-        }
+        }/*
         /*
         int minuter;
         int timmar;

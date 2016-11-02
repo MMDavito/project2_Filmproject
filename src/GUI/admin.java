@@ -319,39 +319,43 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_minuterActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        int tim;
-        int min;
-        int sekunder = 0;
-        try {
-            min = Integer.parseInt(this.minuter.getText());
-            tim= Integer.parseInt(this.timmar.getText());
-            sekunder = omvandla.time.timeToSec(tim, min);
+        if (this.filmnamn.toString().length() <= 40 && this.regissör.toString().length() <= 60) {
+            int tim;
+            int min;
+            int sekunder = 0;
+            try {
+                min = Integer.parseInt(this.minuter.getText());
+                tim = Integer.parseInt(this.timmar.getText());
+                sekunder = omvandla.time.timeToSec(tim, min);
 
-        } catch (Exception e) {
-            listMessage.setText("Fyll i korrekt tid");
-            System.out.println("Error: " + e);
+            } catch (Exception e) {
+                listMessage.setText("Fyll i korrekt tid");
+                System.out.println("Error: " + e);
+            }
+            try {
+                FilmObjekt film = new FilmObjekt();
+
+                /*project2filmproject.FilmObjekt[] film = new project2filmproject.FilmObjekt[1];*/
+                film.Filmnamn = this.filmnamn.getText();
+                film.Regissör = this.regissör.getText();
+                film.Beskrivning = this.beskrivning.getText();
+                film.Genre = this.comboGenreList.getSelectedItem().toString();
+                film.Längd = sekunder;
+                film.setRelease(this.releasedatum.getText());
+                film.setBetyg(Integer.parseInt(this.betyg.getText()));
+                //Fel härnånstans
+                JOptionPane.showMessageDialog(null, "år " + film.getRelease() + " betyg " + film.getBetyg());
+                project2filmproject.FilmFörstörd.Seter(film);
+                listMessage.setText("Inlägg lyckades");
+            } catch (Exception e) {
+                listMessage.setText("Fyll i fält");
+                System.out.println("Error " + e);
+            }
+        } else {
+            this.listMessage.setText("Regissörnamn, max 60 tecken, Filmnamn max 40");
         }
-        try {
-            FilmObjekt film = new FilmObjekt();
 
-            /*project2filmproject.FilmObjekt[] film = new project2filmproject.FilmObjekt[1];*/
-            film.Filmnamn = this.filmnamn.getText();
-            film.Regissör = this.regissör.getText();
-            film.Beskrivning = this.beskrivning.getText();
-            film.Genre = this.comboGenreList.getSelectedItem().toString();
-            film.Längd = sekunder;
-            film.setRelease(this.releasedatum.getText());
-            film.SettDatum = null;
-            film.SettGånger = 0;
-            film.setBetyg(Integer.parseInt(this.betyg.getText()));
-            //Fel härnånstans
-            JOptionPane.showMessageDialog(null, "år "+ film.getRelease()+ " betyg "+ film.getBetyg());
-            project2filmproject.FilmFörstörd.Seter(film);
-            listMessage.setText("Inlägg lyckades");
-        } catch (Exception e) {
-            listMessage.setText("Fyll i fält");
-            System.out.println("Error " + e);
-            /*String filmnamn = this.filmnamn.getText(),
+        /*String filmnamn = this.filmnamn.getText(),
             regissör = this.regissör.getText(),
             beskrivning = this.beskrivning.getText();
 
@@ -370,8 +374,7 @@ public class admin extends javax.swing.JFrame {
             Date releasedatum, settDatum;
             int betyg, settGånger;*/
 
-            /*project2filmproject.Set.Seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);*/
-        }
+ /*project2filmproject.Set.Seter(filmnamn, regissör, genre, sekunder, null, 0, 0, null, beskrivning);*/
 
     }//GEN-LAST:event_addActionPerformed
 
@@ -383,11 +386,11 @@ public class admin extends javax.swing.JFrame {
         minuter.setText("");
         releasedatum.setText("");
         betyg.setText("");
-        beskrivning.setText("");        
+        beskrivning.setText("");
     }//GEN-LAST:event_clearActionPerformed
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
-        System.exit(0);
+        this.setVisible(false);
     }//GEN-LAST:event_logOutActionPerformed
 
     private void betygActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygActionPerformed

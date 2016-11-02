@@ -9,10 +9,8 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExceptio
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,9 +30,9 @@ public class FilmFörstörd {
 
             try {
                 String query = "INSERT INTO filmregister (filmnamn, regissör, "
-                        + "genre, längd, releasedatum, betyg, sett_gånger, "
-                        + "beskrivning, sett_datum, redigerad_datum)"
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        + "genre, längd, releasedatum, betyg, "
+                        + "beskrivning, redigerad_datum)"
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
                 Calendar calandar = Calendar.getInstance();
                 java.sql.Timestamp startDate = new java.sql.Timestamp(calandar.getTime().getTime());
@@ -46,10 +44,8 @@ public class FilmFörstörd {
                 preparedStatement.setInt(4, film.Längd);
                 preparedStatement.setString(5, film.getRelease());
                 preparedStatement.setInt(6, film.getBetyg());
-                preparedStatement.setInt(7, film.SettGånger);
-                preparedStatement.setString(8, film.Beskrivning);
-                preparedStatement.setDate(9, film.SettDatum);
-                preparedStatement.setTimestamp(10, startDate);
+                preparedStatement.setString(7, film.Beskrivning);
+                preparedStatement.setTimestamp(8, startDate);
                 preparedStatement.execute();
                 try {
                     connection.close();
@@ -172,8 +168,6 @@ public class FilmFörstörd {
                 film.Genre = genreGet(film.Filmnamn);
                 film.Längd = rs.getInt("längd");
                 film.setRelease(rs.getString("releasedatum"));
-                film.SettDatum = null;
-                film.SettGånger = 0;
                 film.setBetyg(rs.getInt("betyg"));
 
                 return film;
@@ -300,8 +294,6 @@ public class FilmFörstörd {
                 film.Genre = genreGet(film.Filmnamn);
                 film.Längd = rs.getInt("längd");
                 film.dbSetRelease(rs.getString("releasedatum"));
-                film.SettDatum = null;
-                film.SettGånger = 0;
                 film.setBetyg(rs.getInt("betyg"));
 
                 filmer.add(film);
@@ -341,8 +333,6 @@ public class FilmFörstörd {
                 film.Genre = genreGet(film.Filmnamn);
                 film.Längd = rs.getInt("längd");
                 film.dbSetRelease(rs.getString("releasedatum"));
-                film.SettDatum = null;
-                film.SettGånger = 0;
                 film.setBetyg(rs.getInt("betyg"));
 
                 filmer.add(film);
@@ -374,8 +364,3 @@ public class FilmFörstörd {
     }
 }
 
-/*public static void Redigera(String filmnamn){
-Redigera redigera = new Redigera();
-redigera.setVisible(true);
-
-}*/
