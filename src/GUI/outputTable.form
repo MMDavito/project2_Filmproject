@@ -38,22 +38,24 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" pref="443" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="comboGenreList" min="-2" pref="113" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="okBtn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                          <Component id="cancel" min="-2" pref="160" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane1" min="-2" pref="648" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="comboGenreList" min="-2" pref="113" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="okBtn" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
-                  <Component id="cancel" min="-2" pref="160" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -116,16 +118,27 @@
             <Component class="javax.swing.JTable" name="tableFilmer">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="4">
-                    <Column editable="true" title="Filmnamn" type="java.lang.String"/>
-                    <Column editable="true" title="Regiss&#xf6;r" type="java.lang.String"/>
-                    <Column editable="true" title="L&#xe4;ngd" type="java.lang.String"/>
-                    <Column editable="true" title="Beskrivning" type="java.lang.String"/>
-                    <Column editable="true" title="&#xc5;r" type="java.lang.String"/>
+                  <Table columnCount="6" rowCount="4">
+                    <Column editable="false" title="Filmnamn" type="java.lang.String"/>
+                    <Column editable="false" title="Regiss&#xf6;r" type="java.lang.String"/>
+                    <Column editable="false" title="L&#xe4;ngd" type="java.lang.String"/>
+                    <Column editable="false" title="Beskrivning" type="java.lang.String"/>
+                    <Column editable="false" title="&#xc5;r" type="java.lang.String"/>
+                    <Column editable="false" title="Betyg" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>

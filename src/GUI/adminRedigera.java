@@ -379,7 +379,8 @@ public class adminRedigera extends javax.swing.JFrame {
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         FilmObjekt film = new FilmObjekt();
         String gammalFilm = this.oldFilmnamn.getText();
-        if (this.newFilmnamn.toString().length() <= 40 && this.regissör.toString().length() <= 60 && this.beskrivning.toString().length() <= 500) {
+        if (this.newFilmnamn.getText().length() <= 40 && this.regissör.getText().length() <= 60 && this.beskrivning.getText().length() <= 500) {
+            this.listMessage.setText("");
             int tim;
             int min;
             int sekunder = 0;
@@ -408,10 +409,7 @@ public class adminRedigera extends javax.swing.JFrame {
                 listMessage.setText("Fyll i fält");
                 System.out.println("Error " + e);
             }
-        } else if (this.newFilmnamn == null || this.regissör == null) {
-            this.listMessage.setText("Fyll i fält");
         } else {
-            
             this.listMessage.setText("Regissörnamn, max 60 tecken, Filmnamn max 40 "
                     + "beskrivning max 500");
         }

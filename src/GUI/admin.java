@@ -320,9 +320,9 @@ public class admin extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         System.out.println(this.filmnamn.getText().toString());
-        
-        
-        if (this.filmnamn.toString().length() <= 40 && this.regissör.toString().length() <= 60) {
+
+        if (this.filmnamn.getText().length() <= 40 && this.regissör.getText().length() <= 60 && this.beskrivning.getText().length() <= 500) {
+            this.listMessage.setText("");
             int tim;
             int min;
             int sekunder = 0;
@@ -354,9 +354,7 @@ public class admin extends javax.swing.JFrame {
                 listMessage.setText("Fyll i fält");
                 System.out.println("Error " + e);
             }
-        }else if (this.regissör.getText() == "" || this.filmnamn.getText() == "") {
-            this.listMessage.setText("måste fyllas i");
-        } else{
+        } else {
             this.listMessage.setText("Regissörnamn, max 60 tecken, Filmnamn max 40 "
                     + "beskrivning max 500");
         }

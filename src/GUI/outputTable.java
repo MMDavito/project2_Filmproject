@@ -65,21 +65,28 @@ public class outputTable extends javax.swing.JFrame {
 
         tableFilmer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Filmnamn", "Regissör", "Längd", "Beskrivning", "År"
+                "Filmnamn", "Regissör", "Längd", "Beskrivning", "År", "Betyg"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tableFilmer);
@@ -96,18 +103,18 @@ public class outputTable extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(comboGenreList, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(okBtn)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(132, 132, 132)
+                        .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(comboGenreList, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(okBtn)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -161,7 +168,8 @@ ArrayList<FilmObjekt> filmer = new ArrayList<>();
                 
                 } catch (Exception e) {System.out.println("Tid är fel "+e);
                 }
-                model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning, film.getRelease()});                
+                String betyg = Integer.toString(film.getBetyg());
+                model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning, film.getRelease(), betyg});                
             }
         }else{
             model.getDataVector().removeAllElements();
@@ -173,8 +181,8 @@ ArrayList<FilmObjekt> filmer = new ArrayList<>();
                 langd = tid.toString();                
                 } catch (Exception e) {System.out.println("Tid är fel "+e);
                 }
-                System.out.println(film.getRelease());
-                model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning, film.getRelease()});        
+                String betyg = Integer.toString(film.getBetyg());
+                model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning, film.getRelease(), betyg});        
             }
         }
     }//GEN-LAST:event_okBtnActionPerformed
