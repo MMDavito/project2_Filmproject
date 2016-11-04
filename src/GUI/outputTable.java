@@ -168,7 +168,7 @@ ArrayList<FilmObjekt> filmer = new ArrayList<>();
                 
                 } catch (Exception e) {System.out.println("Tid är fel "+e);
                 }
-                String betyg = Integer.toString(film.getBetyg());
+                String betyg = omvandla.Strang.betygToTable(film.getBetyg());
                 model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning, film.getRelease(), betyg});                
             }
         }else{
@@ -181,7 +181,7 @@ ArrayList<FilmObjekt> filmer = new ArrayList<>();
                 langd = tid.toString();                
                 } catch (Exception e) {System.out.println("Tid är fel "+e);
                 }
-                String betyg = Integer.toString(film.getBetyg());
+                String betyg = omvandla.Strang.betygToTable(film.getBetyg());
                 model.addRow(new Object[]{film.Filmnamn, film.Regissör ,langd,film.Beskrivning, film.getRelease(), betyg});        
             }
         }

@@ -92,4 +92,16 @@ public class Strang {
             return kategori;
         }
     }
+
+    public static String betygToTable(int betyg) {
+        String tabel = "";
+        if (betyg >= 0 && betyg <= 9) {
+            tabel = "00" + Integer.toString(betyg);
+        } else if (betyg >= 10 && betyg <= 99) {
+        tabel = "0"+Integer.toString(betyg);
+        }else if (betyg==100){
+            tabel=Integer.toString(betyg);}
+        else{System.out.println("Något blev fel med betyg "+betyg);}
+        return tabel;
+    }
 }
