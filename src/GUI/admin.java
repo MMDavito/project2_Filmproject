@@ -5,11 +5,8 @@
  */
 package GUI;
 
-import java.sql.Date;
-import java.sql.Time;
-import javax.swing.DefaultComboBoxModel;
+
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import project2filmproject.FilmObjekt;
 
 /**
@@ -319,9 +316,10 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_minuterActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        System.out.println(this.filmnamn.getText().toString());
-
-        if (this.filmnamn.getText().length() <= 40 && this.regissör.getText().length() <= 60 && this.beskrivning.getText().length() <= 500) {
+        String newFNamn = this.filmnamn.getText();
+        String newRegissör = this.regissör.getText();
+        String newBeskrivning = this.beskrivning.getText();
+        if (newFNamn.length() <= 40 && newRegissör.length() <= 60 && newBeskrivning.length() <= 500) {
             this.listMessage.setText("");
             int tim;
             int min;
@@ -329,7 +327,7 @@ public class admin extends javax.swing.JFrame {
             try {
                 min = Integer.parseInt(this.minuter.getText());
                 tim = Integer.parseInt(this.timmar.getText());
-                sekunder = omvandla.time.timeToSec(tim, min);
+                sekunder = omvandla.time.tidToSec(tim, min);
 
             } catch (Exception e) {
                 listMessage.setText("Fyll i korrekt tid");
@@ -338,17 +336,17 @@ public class admin extends javax.swing.JFrame {
             try {
                 FilmObjekt film = new FilmObjekt();
 
-                /*project2filmproject.FilmObjekt[] film = new project2filmproject.FilmObjekt[1];*/
-                film.Filmnamn = this.filmnamn.getText();
-                film.Regissör = this.regissör.getText();
-                film.Beskrivning = this.beskrivning.getText();
+                
+                film.Filmnamn = newFNamn;
+                film.Regissör = newRegissör;
+                film.Beskrivning = newBeskrivning;
                 film.Genre = this.comboGenreList.getSelectedItem().toString();
                 film.Längd = sekunder;
                 film.setRelease(this.releasedatum.getText());
                 film.setBetyg(Integer.parseInt(this.betyg.getText()));
                 //Fel härnånstans
                 JOptionPane.showMessageDialog(null, "år " + film.getRelease() + " betyg " + film.getBetyg());
-                project2filmproject.FilmFörstörd.Seter(film);
+                project2filmproject.FilmFörstörd.seter(film);
                 listMessage.setText("Inlägg lyckades");
             } catch (Exception e) {
                 listMessage.setText("Fyll i fält");

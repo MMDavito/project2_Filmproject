@@ -6,12 +6,7 @@
 package project2filmproject;
 
 import GUI.Start;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.util.ArrayList;
-import java.util.Calendar;
-import omvandla.time;
+
 
 /**
  *

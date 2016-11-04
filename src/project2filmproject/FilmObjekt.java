@@ -58,21 +58,5 @@ public class FilmObjekt {
         }
     }
 }
-//construktor
-/*public FilmObjekt(String filmnamn, String regissör, int genre,
-            int längd, Date release, int betyg, int settGånger, Date settDatum,
-            String beskrivning){
-    Filmnamn = filmnamn;
-    Regissör=regissör;
-    Genre = genre;
-    Längd = längd;
-    Release = release;
-    Betyg = betyg;
-    SettGånger = settGånger;
-    SettDatum = settDatum;
-    Beskrivning = beskrivning;
-    
-    }
- */
-//construktor
+
 

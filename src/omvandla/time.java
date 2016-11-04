@@ -13,7 +13,7 @@ public class time {
     public static String timar;
     public static String minuter;
 
-    public static int timeToSec(int tim, int min) throws Exception {
+    public static int tidToSec(int tim, int min) throws Exception {
         if (min >= 0 && tim >= 0) {
             int sek = min * 60 + tim * 3600;
             return sek;

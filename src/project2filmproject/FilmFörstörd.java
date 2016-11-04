@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class FilmFörstörd {
 
-    public static void Seter(FilmObjekt film)/*(String filmnamn, String regissör, int genre,
+    public static void seter(FilmObjekt film)/*(String filmnamn, String regissör, int genre,
             int längd, Date release, int betyg, int settGånger, Date settDatum,
             String beskrivning)*/ {
         int regissör = 0;
@@ -121,8 +121,8 @@ public class FilmFörstörd {
 
     public static void change(String oldFilmnamn, FilmObjekt film) {
         try {
-            Delete(oldFilmnamn);
-            Seter(film);
+            delete(oldFilmnamn);
+            seter(film);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Problem i change metoden");
@@ -130,7 +130,7 @@ public class FilmFörstörd {
         }
     }
 
-    public static void Delete(String filmnamn) throws Exception {
+    public static void delete(String filmnamn) throws Exception {
         String gamalfilm = filmnamn.toLowerCase();
         Connection connection = ConnectionFactory.getConnection();
         String query = "DELETE FROM filmregister WHERE filmnamn = ?";
@@ -145,7 +145,7 @@ public class FilmFörstörd {
         }
     }
 //Hämtar information om en bestämd film
-    public static FilmObjekt GeterFilmnamn(String söktNamn) {
+    public static FilmObjekt geterFilmnamn(String söktNamn) {
         FilmObjekt film = new FilmObjekt();
         try {
 
@@ -237,7 +237,7 @@ public class FilmFörstörd {
     }
 
     public static String regissörGet(String filmnamn) {
-        String reg = "null";
+        String reg = "fel i regissörGet";
         try {
             Connection connection = ConnectionFactory.getConnection();
 
@@ -363,4 +363,3 @@ public class FilmFörstörd {
 
     }
 }
-

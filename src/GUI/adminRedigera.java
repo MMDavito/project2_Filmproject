@@ -31,7 +31,7 @@ public class adminRedigera extends javax.swing.JFrame {
 
     public static void film(String filmNamn) {
         filmensNamn = filmNamn;
-        nyFilm = project2filmproject.FilmFörstörd.GeterFilmnamn(filmensNamn);
+        nyFilm = project2filmproject.FilmFörstörd.geterFilmnamn(filmensNamn);
         try {
             tid = omvandla.time.secToTime(nyFilm.Längd);
 
@@ -379,7 +379,10 @@ public class adminRedigera extends javax.swing.JFrame {
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         FilmObjekt film = new FilmObjekt();
         String gammalFilm = this.oldFilmnamn.getText();
-        if (this.newFilmnamn.getText().length() <= 40 && this.regissör.getText().length() <= 60 && this.beskrivning.getText().length() <= 500) {
+        String newFNamn =this.newFilmnamn.getText();
+        String newRegissör = this.regissör.getText();
+        String newBeskrivning = this.beskrivning.getText();
+        if (newFNamn.length() <= 40 && newRegissör.length() <= 60 && newBeskrivning.length() <= 500) {
             this.listMessage.setText("");
             int tim;
             int min;
@@ -387,7 +390,7 @@ public class adminRedigera extends javax.swing.JFrame {
             try {
                 min = Integer.parseInt(this.minuter.getText());
                 tim = Integer.parseInt(this.timmar.getText());
-                sekunder = omvandla.time.timeToSec(tim, min);
+                sekunder = omvandla.time.tidToSec(tim, min);
 
             } catch (Exception e) {
                 listMessage.setText("Fyll i korrekt tid");
@@ -395,9 +398,9 @@ public class adminRedigera extends javax.swing.JFrame {
             }
             try {
                 /*project2filmproject.FilmObjekt[] film = new project2filmproject.FilmObjekt[1];*/
-                film.Filmnamn = this.newFilmnamn.getText();
-                film.Regissör = this.regissör.getText();
-                film.Beskrivning = this.beskrivning.getText();
+                film.Filmnamn = newFNamn;
+                film.Regissör = newRegissör;
+                film.Beskrivning = newBeskrivning;
                 film.Genre = this.comboGenreList.getSelectedItem().toString();
                 film.Längd = sekunder;
                 film.setRelease(this.releasedatum.getText());
@@ -445,7 +448,7 @@ public class adminRedigera extends javax.swing.JFrame {
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         String taBort = this.oldFilmnamn.getText();
         try {
-            project2filmproject.FilmFörstörd.Delete(taBort);
+            project2filmproject.FilmFörstörd.delete(taBort);
             JOptionPane.showMessageDialog(null, "Tog bort " + taBort);
             this.setVisible(false);
         } catch (Exception e) {

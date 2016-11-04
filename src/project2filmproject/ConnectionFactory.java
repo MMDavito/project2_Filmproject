@@ -7,17 +7,13 @@ package project2filmproject;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author daca97002
  */
 public class ConnectionFactory{
-    public static Connection getConnection(/*ändra till hash?*/
-       /* String userName, String */) throws Exception{ 
+    public static Connection getConnection() throws Exception{ 
         String url = "jdbc:mysql://localhost/filmregister";
         String namn = "root";
         String löss = "";
@@ -29,9 +25,9 @@ public class ConnectionFactory{
 
     
     
-    public static Boolean Autentisering(String username, String password){
+   /* public static Boolean Autentisering(String username, String password){
     //kolla autentisering, och skicka om true till getConnection
     return true;
-    }
+    }*/
     
 }
