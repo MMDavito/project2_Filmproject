@@ -5,7 +5,8 @@
  */
 package GUI;
 
-
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import project2filmproject.FilmObjekt;
 
@@ -57,10 +58,12 @@ public class admin extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         listMessage = new javax.swing.JLabel();
         addList = new javax.swing.JButton();
+        danishButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "ADMIN", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION))));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("GUI/Bundle"); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("admin.jPanel1.border.border.border.title"), javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION)))); // NOI18N
 
         filmnamn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,9 +71,9 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Filmnamn");
+        jLabel1.setText(bundle.getString("admin.jLabel1.text")); // NOI18N
 
-        jLabel2.setText("Regissör");
+        jLabel2.setText(bundle.getString("admin.jLabel2.text")); // NOI18N
 
         regissör.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +81,7 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Genre");
+        jLabel3.setText(bundle.getString("admin.jLabel3.text")); // NOI18N
 
         tFGenre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,16 +89,16 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Längd");
+        jLabel4.setText(bundle.getString("admin.jLabel4.text")); // NOI18N
 
-        timmar.setText("Timme");
+        timmar.setText(bundle.getString("admin.timmar.text")); // NOI18N
         timmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 timmarActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Releaseår");
+        jLabel5.setText(bundle.getString("admin.jLabel5.text")); // NOI18N
 
         releasedatum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +106,7 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("Betyg");
+        jLabel6.setText(bundle.getString("admin.jLabel6.text")); // NOI18N
 
         betyg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,34 +114,34 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Beskrivning");
+        jLabel9.setText(bundle.getString("admin.jLabel9.text")); // NOI18N
 
         beskrivning.setColumns(20);
         beskrivning.setRows(5);
         jScrollPane1.setViewportView(beskrivning);
 
-        logOut.setText("Loga ut");
+        logOut.setText(bundle.getString("admin.logOut.text")); // NOI18N
         logOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logOutActionPerformed(evt);
             }
         });
 
-        clear.setText("Rensa");
+        clear.setText(bundle.getString("admin.clear.text")); // NOI18N
         clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearActionPerformed(evt);
             }
         });
 
-        add.setText("Lägg till");
+        add.setText(bundle.getString("admin.add.text")); // NOI18N
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
             }
         });
 
-        minuter.setText("Minut");
+        minuter.setText(bundle.getString("admin.minuter.text")); // NOI18N
         minuter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 minuterActionPerformed(evt);
@@ -154,10 +157,17 @@ public class admin extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(listGenreList);
 
-        addList.setText("OK");
+        addList.setText(bundle.getString("admin.addList.text")); // NOI18N
         addList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addListActionPerformed(evt);
+            }
+        });
+
+        danishButton.setText(bundle.getString("admin.danishButton.text")); // NOI18N
+        danishButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                danishButtonActionPerformed(evt);
             }
         });
 
@@ -166,13 +176,7 @@ public class admin extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(tFGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addList)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -212,8 +216,15 @@ public class admin extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(betyg, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(releasedatum, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addGap(0, 6, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(danishButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(tFGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addList))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comboGenreList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -223,7 +234,7 @@ public class admin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(add)
-                        .addGap(0, 17, Short.MAX_VALUE)))
+                        .addGap(0, 29, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -232,7 +243,8 @@ public class admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboGenreList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(danishButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -269,7 +281,7 @@ public class admin extends javax.swing.JFrame {
                             .addComponent(betyg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logOut)
                     .addComponent(clear)
@@ -335,7 +347,6 @@ public class admin extends javax.swing.JFrame {
             try {
                 FilmObjekt film = new FilmObjekt();
 
-                
                 film.Filmnamn = newFNamn;
                 film.Regissör = newRegissör;
                 film.Beskrivning = newBeskrivning;
@@ -400,6 +411,33 @@ public class admin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_filmnamnActionPerformed
 
+    private void danishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_danishButtonActionPerformed
+        loadLocale("da", "DK");
+    }//GEN-LAST:event_danishButtonActionPerformed
+    public void loadLocale(String language, String country) {
+        Locale locale = new Locale(language, country);
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("GUI/Bundle", locale);
+        
+        jLabel4.setText(resourceBundle.getString("admin.jLabel4.text"));
+        jLabel3.setText(resourceBundle.getString("admin.jLabel3.text"));
+        addList.setText(resourceBundle.getString("admin.addList.text"));
+        jLabel2.setText(resourceBundle.getString("admin.jLabel2.text"));
+        jLabel1.setText(resourceBundle.getString("admin.jLabel1.text"));
+        minuter.setText(resourceBundle.getString("admin.minuter.text"));
+        add.setText(resourceBundle.getString("admin.add.text"));
+        clear.setText(resourceBundle.getString("admin.clear.text"));
+        logOut.setText(resourceBundle.getString("admin.logOut.text"));
+        jLabel9.setText(resourceBundle.getString("admin.jLabel9.text"));
+        jLabel6.setText(resourceBundle.getString("admin.jLabel6.text"));
+        jLabel5.setText(resourceBundle.getString("admin.jLabel5.text"));
+        timmar.setText(resourceBundle.getString("admin.timmar.text"));
+        danishButton.setText(resourceBundle.getString("admin.danishButton.text"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceBundle.getString("admin.jPanel1.border.border.border.title"),
+                javax.swing.border.TitledBorder.CENTER,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,
+                new java.awt.Font("Font",0,14)));
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -442,6 +480,7 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JTextField betyg;
     private javax.swing.JButton clear;
     private javax.swing.JComboBox<String> comboGenreList;
+    private javax.swing.JButton danishButton;
     private javax.swing.JTextField filmnamn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

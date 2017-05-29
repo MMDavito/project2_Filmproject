@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 /**
  *
  * @author daca97002
@@ -30,22 +33,31 @@ public class Start extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         showFilmer = new javax.swing.JButton();
         editFilm = new javax.swing.JButton();
+        toggleToDanish = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Välj vad du vill göra", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("GUI/Bundle"); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("Start.jPanel1.border.title"), javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION)); // NOI18N
 
-        showFilmer.setText("Visa alla filmer");
+        showFilmer.setText(bundle.getString("Start.showFilmer.text")); // NOI18N
         showFilmer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showFilmerActionPerformed(evt);
             }
         });
 
-        editFilm.setText("Lägg till/redigera film");
+        editFilm.setText(bundle.getString("Start.editFilm.text")); // NOI18N
         editFilm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editFilmActionPerformed(evt);
+            }
+        });
+
+        toggleToDanish.setText(bundle.getString("Start.toggleToDanish.text")); // NOI18N
+        toggleToDanish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toggleToDanishActionPerformed(evt);
             }
         });
 
@@ -57,17 +69,21 @@ public class Start extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(142, 142, 142)
-                        .addComponent(showFilmer))
+                        .addComponent(showFilmer)
+                        .addGap(18, 18, 18)
+                        .addComponent(toggleToDanish))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(127, 127, 127)
                         .addComponent(editFilm)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(showFilmer)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showFilmer)
+                    .addComponent(toggleToDanish))
                 .addGap(18, 18, 18)
                 .addComponent(editFilm)
                 .addContainerGap(202, Short.MAX_VALUE))
@@ -97,6 +113,20 @@ public class Start extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_editFilmActionPerformed
 
+    private void toggleToDanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toggleToDanishActionPerformed
+        loadLocale("da","DK");
+    }//GEN-LAST:event_toggleToDanishActionPerformed
+    public void loadLocale(String language, String country){
+        Locale locale = new Locale(language,country);
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("GUI/Bundle",locale);
+        editFilm.setText(resourceBundle.getString("Start.editFilm.text"));
+        showFilmer.setText(resourceBundle.getString("Start.showFilmer.text"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceBundle.getString("Start.jPanel1.border.title"),
+                javax.swing.border.TitledBorder.CENTER,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,
+                new java.awt.Font("Font",0,14)));
+        toggleToDanish.setText(resourceBundle.getString("Start.toggleToDanish.text"));
+        }
     /**
      * @param args the command line arguments
      */
@@ -136,5 +166,6 @@ public class Start extends javax.swing.JFrame {
     private javax.swing.JButton editFilm;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton showFilmer;
+    private javax.swing.JToggleButton toggleToDanish;
     // End of variables declaration//GEN-END:variables
 }
